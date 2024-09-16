@@ -1,4 +1,4 @@
-package org.java3.java3;
+package org.java3;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.*;
