@@ -19,26 +19,27 @@
     <body>
         <h1>ĐĂNG KÝ</h1>
         <form action="<c:url value="/signin"/>" method="post">
-            Tên đăng nhập: <input type="text" name="username" value="${param}"><br>
-            Mật khẩu: <input type="password" name="password" value="${param}"><br>
+            Tên đăng nhập: <input type="text" name="username" value="${param.username}"><br>
+            Mật khẩu: <input type="password" name="password" value="${param.password}"><br>
             Giới tính:
-            <input type="radio" name="gioiTinh" value="Nam" ${param == "Nam"? "checked":""}>Nam
-            <input type="radio" name="gioiTinh" value="Nữ" ${param != "Nữ"? "":"checked"}>Nữ<br>
-            Đã có gia đình: <input type="checkbox" name="tthn" ${param != null? "checked":""}><br>
+            <input type="radio" name="gioiTinh" value="Nam" ${param.gioiTinh == "Nam"? "checked":""}>Nam
+            <input type="radio" name="gioiTinh" value="Nữ" ${param.gioiTinh != "Nữ"? "":"checked"}>Nữ<br>
+            Đã có gia đình: <input type="checkbox" name="tthn" ${param.tthn != null? "checked":""}><br>
             Quốc tịch:
             <select name="national">
-                <option value="VN" ${param=="VN"?"selected":""}>Việt Nam</option>
-                <option value="USA" ${param=="USA"?"selected":""}>Mỹ</option>
-                <option value="JPN" ${param=="JPN"?"selected":""}>Nhật Bản</option>
+                <option value="VN" ${param.national == "VN"?"selected":""}>Việt Nam</option>
+                <option value="USA" ${param.national == "USA"?"selected":""}>Mỹ</option>
+                <option value="JPN" ${param.national == "JPN"?"selected":""}>Nhật Bản</option>
             </select><br>
             Sở thích:<br>
-            <input type="checkbox" name="soThich" value="Đọc sách" ${param != null? "checked":""}>Đọc sách
-            <input type="checkbox" name="soThich" value="Vẽ tranh" ${param != null? "checked":""}>Vẽ tranh
-            <input type="checkbox" name="soThich" value="Nấu ăn" ${param != null? "checked":""}>Nấu ăn
-            <input type="checkbox" name="soThich" value="Chơi game" ${param != null? "checked":""}>Chơi game<br>
+            <input type="checkbox" name="soThich" value="Đọc sách" ${soThich.contains("Đọc sách")? "checked":""}>Đọc sách
+            <input type="checkbox" name="soThich" value="Vẽ tranh" ${soThich.contains("Vẽ tranh")? "checked":""}>Vẽ tranh
+            <input type="checkbox" name="soThich" value="Nấu ăn" ${soThich.contains("Nấu ăn")? "checked":""}>Nấu ăn
+            <input type="checkbox" name="soThich" value="Chơi game" ${soThich.contains("Chơi game")? "checked":""}>Chơi game<br>
             <input type="submit" value="Đăng ký" formmethod="post">
         </form><br>
-
-        ${output}
+        <p>
+            ${output}
+        </p>
     </body>
 </html>

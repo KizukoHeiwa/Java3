@@ -24,7 +24,7 @@ public class Demo extends HttpServlet {
         String gioiTinh = req.getParameter("gioiTinh");
         String tthn = (req.getParameter("tthn") != null)?"Đã kết hôn":"Độc thân";
         String national = req.getParameter("national");
-        String[] soThich = new String[]{req.getParameter("soThich")};
+        String[] soThich = req.getParameterValues("soThich");
 
         String output = "Username: " + username
                 + "\nPassword: " + password
@@ -33,14 +33,15 @@ public class Demo extends HttpServlet {
                 + "\nQuốc tịch: " + national
                 + "\nSở thích: " + Arrays.toString(soThich);
 
-        System.out.println("Username: " + username);
-        System.out.println("Password: " + password);
-        System.out.println("Giới tính: " + gioiTinh);
-        System.out.println("Tình trạng hôn nhân: " + tthn);
-        System.out.println("Quốc tịch: " + national);
-        System.out.println("Sở thích: " + Arrays.toString(soThich));
+//        System.out.println("Username: " + username);
+//        System.out.println("Password: " + password);
+//        System.out.println("Giới tính: " + gioiTinh);
+//        System.out.println("Tình trạng hôn nhân: " + tthn);
+//        System.out.println("Quốc tịch: " + national);
+//        System.out.println("Sở thích: " + Arrays.toString(soThich));
 
         req.setAttribute("output", output);
+        req.setAttribute("soThich", Arrays.toString(soThich));
         req.getRequestDispatcher("demo.jsp").forward(req, resp);
     }
 }
