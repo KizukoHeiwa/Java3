@@ -19,7 +19,7 @@
     <body>
         <h1>ĐĂNG KÝ</h1>
         <form action="<c:url value="/signin"/>" method="post">
-            Tên đăng nhập: <input type="text" name="username" value="${param.}"><br>
+            Tên đăng nhập: <input type="text" name="username" value="${param}"><br>
             Mật khẩu: <input type="password" name="password" value="${param}"><br>
             Giới tính:
             <input type="radio" name="gioiTinh" value="Nam" ${param == "Nam"? "checked":""}>Nam
