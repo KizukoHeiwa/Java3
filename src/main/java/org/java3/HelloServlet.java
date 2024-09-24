@@ -1,4 +1,4 @@
-package org.java3.java3;
+package org.java3;
 
 import java.io.*;
 import jakarta.servlet.http.*;
