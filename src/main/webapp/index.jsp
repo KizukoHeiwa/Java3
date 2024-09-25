@@ -14,21 +14,21 @@
 </head>
 <body>
 <div class="container">
-    <div class="header d-flex justify-content-between align-items-center bg-success px-3">
-        <img src="img/logo.png" alt="" width="100px" class="left m-2">
+    <div class="header d-flex justify-content-between align-items-center bg-primary px-3">
+        <a href="/" class="logo"><img src="img/logo.png" alt="" width="100px" class="left m-2"></a>
         <div class="center d-flex justify-content-around">
             <input type="text" name="search">
             <a href="#" class="utils">Utilities</a>
         </div>
         <div class="right d-flex justify-content-around">
-            <a href="#" class="signin">Đăng nhập</a>
+            <a href="quanTri" class="signin">Đăng nhập</a>
             <a href="#" class="signup">Đăng ký</a>
         </div>
     </div>
 
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
-            <a href="#">Trang chủ</a>
+            <a href="/">Trang chủ</a>
             <a href="#">Văn hóa</a>
             <a href="#">Kinh tế</a>
             <a href="#">Thế giới</a>
@@ -40,21 +40,21 @@
 
     <div class="article container">
         <div class="row">
-            <div class="main bg-primary col-7">
+            <div class="main col-7">
                 <a href="chiTiet" class="main-news m-2">
-                    <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
+                    <div class="row align-items-center">
+                        <div class="col-4">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
+                        <div class="col-8">
+                            <div class="title fw-bold">
+                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
                             </div>
                             <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
+                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
                             </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
+                            <div class="upDate fw-bold">
+                                25/09/2024 20:10 GMT+7 | Hà Mai
                             </div>
                         </div>
                     </div>
@@ -62,18 +62,18 @@
 
                 <a href="" class="main-news m-2">
                     <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
+                        <div class="col-4">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
+                        <div class="col-8">
+                            <div class="title fw-bold">
+                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
                             </div>
                             <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
+                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
                             </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
+                            <div class="upDate fw-bold">
+                                25/09/2024 20:10 GMT+7 | Hà Mai
                             </div>
                         </div>
                     </div>
@@ -81,37 +81,37 @@
 
                 <a href="" class="main-news m-2">
                     <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
+                        <div class="col-4">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
+                        <div class="col-8">
+                            <div class="title fw-bold">
+                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
                             </div>
                             <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
+                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
                             </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
+                            <div class="upDate fw-bold">
+                                25/09/2024 20:10 GMT+7 | Hà Mai
                             </div>
                         </div>
                     </div>
                 </a>
             </div>
-            <div class="aside bg-secondary col-5">
+            <div class="aside col-5">
                 <a href="chiTiet" class="aside-news m-2">
                     <div class="row">
-                        <div class="news col-3">
-                            <img src="img/logo.png" alt="" width="100px">
+                        <div class="col-3">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
                         <div class="col-9">
-                            <div class="title">
+                            <div class="title fw-bold">
                                 Đây là tiêu đề của 5 tin...
                             </div>
                             <div class="desc">
                                 Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                             </div>
-                            <div class="upDate">
+                            <div class="upDate fw-bold">
                                 Ngày đăng | Tác giả
                             </div>
                         </div>
@@ -120,17 +120,17 @@
 
                 <a href="" class="aside-news m-2">
                     <div class="row">
-                        <div class="news col-3">
-                            <img src="img/logo.png" alt="" width="100px">
+                        <div class="col-3">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
                         <div class="col-9">
-                            <div class="title">
+                            <div class="title fw-bold">
                                 Đây là tiêu đề của 5 tin...
                             </div>
                             <div class="desc">
                                 Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                             </div>
-                            <div class="upDate">
+                            <div class="upDate fw-bold">
                                 Ngày đăng | Tác giả
                             </div>
                         </div>
@@ -139,17 +139,17 @@
 
                 <a href="" class="aside-news m-2">
                     <div class="row">
-                        <div class="news col-3">
-                            <img src="img/logo.png" alt="" width="100px">
+                        <div class="col-3">
+                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
                         </div>
                         <div class="col-9">
-                            <div class="title">
+                            <div class="title fw-bold">
                                 Đây là tiêu đề của 5 tin...
                             </div>
                             <div class="desc">
                                 Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
                             </div>
-                            <div class="upDate">
+                            <div class="upDate fw-bold">
                                 Ngày đăng | Tác giả
                             </div>
                         </div>
@@ -159,16 +159,37 @@
         </div>
     </div>
 
-    <div class="footer container bg-info">
+    <div class="footer container text-bg-primary">
         <div class="row text-center">
-            <div class="col-4">
-                Đây là cột 1 của footer
+            <div class="footerLeft col-8">
+                <div class="footerMenu">
+                    <h1 class="fMenuTitle">About Me</h1>
+                    <ul class="fList">
+                        <li class="fListItem"><a href="https://www.facebook.com/profile.php?id=100031183186280">Facebook</a></li>
+                        <li class="fListItem"><a href="https://github.com/KizukoHeiwa">Github</a></li>
+                        <li class="fListItem"><a href="https://linktr.ee/hthuy7605">Social Media</a></li>
+                    </ul>
+                </div>
+
+                <div class="footerMenu">
+                    <h1 class="fMenuTitle">FPT Edu</h1>
+                    <ul class="fList">
+                        <li class="fListItem"><a href="https://caodang.fpt.edu.vn/">FPT Polytechnic</a></li>
+                        <li class="fListItem"><a href="https://fpt.edu.vn/">More About Us</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-4">
-                Đây là cột thứ 2
-            </div>
-            <div class="col-4">
-                Đây là cột 3
+            <div class="footerRight col-4">
+                <div class="footerRightMenu">
+                    <h1 class="fMenuTitle">Keep Contact With Me!</h1>
+                    <div class="fMail">
+                        <input type="text" placeholder="your@email.com" class="fInput">
+                        <button class="fButton">Send!</button>
+                    </div>
+                </div>
+                <div class="footerRightMenu">
+                    <span class="copyright">Hoang Thuy. All rights reserved. 2024</span>
+                </div>
             </div>
         </div>
     </div>
