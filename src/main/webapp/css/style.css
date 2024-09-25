@@ -1,0 +1,24 @@
+.header * *{
+    margin-left: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+.menu{
+    padding: 0;
+    background: lightskyblue;
+    text-align: center;
+}
+.menu-items .active{
+    background: steelblue;
+}
+.menu .menu-items a{
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+.menu .menu-items a:hover{
+    background: steelblue;
+}

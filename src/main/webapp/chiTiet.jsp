@@ -1,8 +1,11 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<!DOCTYPE html>
+<%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 25/09/2024
+  Time: 10:23 pm
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -28,7 +31,7 @@
 
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
-            <a href="#">Trang chủ</a>
+            <a href="/">Trang chủ</a>
             <a href="#">Văn hóa</a>
             <a href="#">Kinh tế</a>
             <a href="#">Thế giới</a>
@@ -41,65 +44,17 @@
     <div class="article container">
         <div class="row">
             <div class="main bg-primary col-7">
-                <a href="chiTiet" class="main-news m-2">
-                    <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
-                        </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
-                            </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="" class="main-news m-2">
-                    <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
-                        </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
-                            </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="" class="main-news m-2">
-                    <div class="row">
-                        <div class="news col-2">
-                            <img src="img/logo.png" alt="" width="100px">
-                        </div>
-                        <div class="col-10">
-                            <div class="title">
-                                Đây là tiêu đề của bản tin
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur ing elit.
-                            </div>
-                            <div class="upDate">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                <h3 class="title">Tiêu đề</h3>
+                <p>
+                    <img src="img/logo.png" alt="" width="100px" style="float:left">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus laborum laboriosam adipisci temporibus aliquam ab numquam animi cupiditate ipsum! Obcaecati corrupti culpa sint dolorem esse expedita eaque, ad odit quidem!
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Est ducimus nostrum laborum corrupti illum iusto molestiae aut praesentium possimus doloribus cumque animi quas, libero voluptatibus, tempora ad culpa. Magni, molestiae?
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui fuga voluptas pariatur! Sapiente, amet perferendis harum magni est quas molestiae accusantium porro sunt, quia iure quis assumenda enim aliquid velit.
+                </p>
+                <div style="float: right;">Ngày đăng | Tác giả</div>
             </div>
             <div class="aside bg-secondary col-5">
-                <a href="chiTiet" class="aside-news m-2">
+                <a href="" class="aside-news m-2">
                     <div class="row">
                         <div class="news col-3">
                             <img src="img/logo.png" alt="" width="100px">
