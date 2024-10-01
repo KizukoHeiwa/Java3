@@ -10,7 +10,7 @@ import org.apache.commons.codec.binary.Base64;
 
 import java.io.IOException;
 
-@WebServlet({"/Cookies_Session", "/Cookies_Session/login"})
+@WebServlet({"/Cookies_Session", "/login"})
 public class Bai3_Cookies_Session extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,8 +46,16 @@ public class Bai3_Cookies_Session extends HttpServlet {
                 // Gửi về trình duyệt
                 resp.addCookie(cookie); // cookie
             }
-        } else {
+            else {
+                Cookie cookie = new Cookie("user", "");
+                cookie.setMaxAge(0); // xóa cookie
+                cookie.setPath("/");
+                resp.addCookie(cookie); // cookie
+            }
+        }
+        else {
             req.setAttribute("message", "Invalid login info!");
         }
+        req.getRequestDispatcher("Bai3_Cookies_Session.jsp").forward(req, resp);
     }
 }

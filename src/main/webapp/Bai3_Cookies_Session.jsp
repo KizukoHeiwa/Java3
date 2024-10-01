@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -11,16 +12,17 @@
     <title>FPT Polytechnic</title>
 </head>
 <body>
-    <form action="/login" method="post">
+    <form action="login" method="post">
         <label for="username">Username:</label>
-        <input name="username" id="username" value="${username}"> <br>
+        <input name="username" id="username" value="${username}"><br>
         <label for="password">Password:</label>
-        <input name="password" id="password" value="${password}"> <br>
+        <input name="password" id="password" value="${password}"><br>
         <label>
             <input type="checkbox" name="remember-me">Remember me?
         </label>
         <hr>
         <button>Login</button>
     </form>
+    ${message}
 </body>
 </html>
