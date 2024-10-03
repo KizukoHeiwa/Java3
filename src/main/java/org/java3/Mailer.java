@@ -10,7 +10,7 @@ import jakarta.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class Mailer {
-    public static int sendEmail(String from, String to, String subject, String body) {
+    public static void sendEmail(String from, String to, String subject, String body) {
         // Thông số kết nối GMail
         Properties props = new Properties();
         props.setProperty("mail.smtp.auth", "true");
@@ -36,10 +36,10 @@ public class Mailer {
             mail.setReplyTo(mail.getFrom());
             // Gửi mail
             Transport.send(mail);
-            return 0;
+//            return 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return -1;
+//        return -1;
     }
 }
