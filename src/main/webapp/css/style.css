@@ -1,0 +1,93 @@
+.header * *{
+    margin-left: 10px;
+    color: white;
+}
+a{
+    text-decoration: none;
+}
+.menu{
+    padding: 0;
+    background: lightskyblue;
+    text-align: center;
+}
+.menu-items .active{
+    background: steelblue;
+}
+.menu .menu-items a{
+    color: white;
+    padding: 10px;
+    width: 100%;
+}
+.menu .menu-items a:hover{
+    background: steelblue;
+}
+
+.article{
+    color: black;
+}
+.title{
+    font-size: 20px;
+}
+.desc{
+    color: gray;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+.footerLeft{
+    flex: 2;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.fMenuTitle{
+    font-size: 30px;
+    margin: 5px;
+}
+
+.fList{
+    padding: 0;
+    list-style: none;
+}
+
+.fListItem{
+    margin-bottom: 10px;
+    color: white;
+}
+
+.fListItem a{
+    color: white;
+    text-decoration: none;
+}
+.fListItem a:visited{
+    color: white;
+    text-decoration: none;
+}
+
+.footerRight{
+    flex: 1;
+    padding: 50px;;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fInput{
+    padding: 5px;
+    margin: 5px;
+}
+
+.fButton{
+    padding: 5px;
+    background-color: black;
+    color: white;
+}
+
+.copyright{
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+}
