@@ -31,7 +31,7 @@ public class CategoriesDAO extends AbstractDAO<Categories, Object>{
 
     @Override
     public Categories selectById(Object id) {
-        String sql = "{CALL spCategoriesSelectByID}";
+        String sql = "{CALL spCategoriesSelectByID(?)}";
         List<Categories> list = selectBySql(sql);
         return !list.isEmpty() ? list.get(0) : null;
     }

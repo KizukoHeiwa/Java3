@@ -47,7 +47,7 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
 
     @Override
     public Users selectById(Object id) {
-        String sql = "{CALL spUsersSelectByID}";
+        String sql = "{CALL spUsersSelectByID(?)}";
         List<Users> list = selectBySql(sql);
         return !list.isEmpty() ? list.get(0) : null;
     }

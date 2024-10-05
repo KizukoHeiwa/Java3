@@ -49,7 +49,7 @@ public class NewsDAO extends AbstractDAO<News, Object> {
 
     @Override
     public News selectById(Object id) {
-        String sql = "{CALL spNewsSelectByID}";
+        String sql = "{CALL spNewsSelectByID(?)}";
         List<News> list = selectBySql(sql);
         return !list.isEmpty() ? list.get(0) : null;
     }
@@ -68,12 +68,12 @@ public class NewsDAO extends AbstractDAO<News, Object> {
             try {
                 rs = XJdbc.executeQuery(sql, args);
                 while(rs.next()){
-                    News entity=new News();
+                    News entity = new News();
                     entity.setId(rs.getString("id"));
                     entity.setTitle(rs.getString("title"));
                     entity.setContent(rs.getString("content"));
                     entity.setImg(rs.getString("img"));
-                    entity.setPosted_date(rs.getDate("date"));
+                    entity.setPosted_date(rs.getDate("posted_date"));
                     entity.setAuthor(rs.getString("author"));
                     entity.setView_count(rs.getInt("view_count"));
                     entity.setCategories_id(rs.getString("categories_id"));

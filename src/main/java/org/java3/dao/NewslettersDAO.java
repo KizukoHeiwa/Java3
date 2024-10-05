@@ -31,7 +31,7 @@ public class NewslettersDAO extends AbstractDAO<Newsletters, Object> {
 
     @Override
     public Newsletters selectById(Object id) {
-        String sql = "{CALL spNewslettersSelectByID}";
+        String sql = "{CALL spNewslettersSelectByID(?)}";
         List<Newsletters> list = selectBySql(sql);
         return !list.isEmpty() ? list.get(0) : null;
     }
