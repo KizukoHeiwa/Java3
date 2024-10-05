@@ -12,7 +12,7 @@ public class NewsDAO extends AbstractDAO<News, Object> {
     @Override
     public void insert(News entity) {
         String sql = "{CALL spNewsInsert(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        XJdbc.executeQuery(sql,
+        XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getTitle(),
                 entity.getContent(),
@@ -27,8 +27,8 @@ public class NewsDAO extends AbstractDAO<News, Object> {
 
     @Override
     public void update(News entity) {
-        String sql = "{CALL spNewsUpdate(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        XJdbc.executeQuery(sql,
+        String sql = "{CALL spNewsUpdate(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+        XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getTitle(),
                 entity.getContent(),
@@ -44,13 +44,13 @@ public class NewsDAO extends AbstractDAO<News, Object> {
     @Override
     public void delete(Object id) {
         String sql = "{CALL spNewsDelete(?)}";
-        XJdbc.executeQuery(sql, id);
+        XJdbc.executeUpdate(sql, id);
     }
 
     @Override
     public News selectById(Object id) {
         String sql = "{CALL spNewsSelectByID(?)}";
-        List<News> list = selectBySql(sql);
+        List<News> list = selectBySql(sql, id);
         return !list.isEmpty() ? list.get(0) : null;
     }
 

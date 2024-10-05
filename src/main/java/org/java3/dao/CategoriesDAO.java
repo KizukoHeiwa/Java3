@@ -12,27 +12,27 @@ public class CategoriesDAO extends AbstractDAO<Categories, Object>{
     @Override
     public void insert(Categories entity) {
         String sql = "{CALL spCategoriesInsert(?, ?)";
-        XJdbc.executeQuery(sql,
+        XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getName());
     }
 
     @Override
     public void update(Categories entity) {
-        String sql = "{CALL spCategoriesUpdate(?, ?)";
-        XJdbc.executeQuery(sql, entity.getId(), entity.getName());
+        String sql = "{CALL spCategoriesUpdate(?, ?)}";
+        XJdbc.executeUpdate(sql, entity.getId(), entity.getName());
     }
 
     @Override
     public void delete(Object id) {
         String sql = "{CALL spCategoriesDelete(?)}";
-        XJdbc.executeQuery(sql, id);
+        XJdbc.executeUpdate(sql, id);
     }
 
     @Override
     public Categories selectById(Object id) {
         String sql = "{CALL spCategoriesSelectByID(?)}";
-        List<Categories> list = selectBySql(sql);
+        List<Categories> list = selectBySql(sql, id);
         return !list.isEmpty() ? list.get(0) : null;
     }
 

@@ -257,7 +257,7 @@ CREATE PROCEDURE spNewslettersSelectByID(
 SELECT * FROM NEWSLETTERS WHERE EMAIL = @EMAIL
 END
 
---Thêm Newsletters: {CALL spNewsInsert(?, ?)}--
+--Thêm Newsletters: {CALL spNewslettersInsert(?, ?)}--
 GO
 CREATE PROCEDURE spNewslettersInsert(
     @EMAIL VARCHAR(50),

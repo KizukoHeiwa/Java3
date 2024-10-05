@@ -12,7 +12,7 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
     @Override
     public void insert(Users entity) {
         String sql = "{CALL spUsersInsert(?, ?, ?, ?, ?, ?, ?, ?)";
-        XJdbc.executeQuery(sql,
+        XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getPassword(),
                 entity.getFullname(),
@@ -26,8 +26,8 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
 
     @Override
     public void update(Users entity) {
-        String sql = "{CALL spUsersUpdate(?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        XJdbc.executeQuery(sql,
+        String sql = "{CALL spUsersUpdate(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+        XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getPassword(),
                 entity.getFullname(),
@@ -42,13 +42,13 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
     @Override
     public void delete(Object id) {
         String sql = "{CALL spUsersDelete(?)}";
-        XJdbc.executeQuery(sql, id);
+        XJdbc.executeUpdate(sql, id);
     }
 
     @Override
     public Users selectById(Object id) {
         String sql = "{CALL spUsersSelectByID(?)}";
-        List<Users> list = selectBySql(sql);
+        List<Users> list = selectBySql(sql, id);
         return !list.isEmpty() ? list.get(0) : null;
     }
 
