@@ -16,7 +16,7 @@ public class TestJdbc {
             News news = newsDAO.selectById(s);
             news.setView_count(news.getView_count() + 1);
             newsDAO.update(news);
-            System.out.println(news.getId() + " - " + news.getContent() + " - " + news.getCategories_id() + " - " + news.getImg() + " - " + news.getView_count());
+            System.out.println(news.getId() + " - " + news.getContent() + " - " + news.getImg() + " - " + news.getView_count());
         }
 //        News news1 = newsDAO.selectById("20240919093010");
 //        news1.setImg("tphcmgido");
