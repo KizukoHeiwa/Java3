@@ -16,6 +16,6 @@ public class News {
     private Date posted_date;
     private String author;
     private int view_count;
-    private String category_id;
+    private String categories_id;
     private boolean home;
 }
