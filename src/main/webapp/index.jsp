@@ -41,120 +41,103 @@
     <div class="article container">
         <div class="row">
             <div class="main col-7">
-                <a href="chiTiet" class="main-news m-2">
-                    <div class="row align-items-center">
-                        <div class="col-4">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-8">
-                            <div class="title fw-bold">
-                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
+                <c:forEach items="${listNews}" var="news">
+                    <a href="chiTiet?id=${news.id}" class="main-news m-2">
+                        <div class="row">
+                            <div class="col-4">
+                                <img src="img/${news.img}" alt="" width="99%">
                             </div>
-                            <div class="desc">
-                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
-                            </div>
-                            <div class="upDate fw-bold">
-                                25/09/2024 20:10 GMT+7 | Hà Mai
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="" class="main-news m-2">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-8">
-                            <div class="title fw-bold">
-                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
-                            </div>
-                            <div class="desc">
-                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
-                            </div>
-                            <div class="upDate fw-bold">
-                                25/09/2024 20:10 GMT+7 | Hà Mai
+                            <div class="col-8">
+                                <div class="title fw-bold">
+                                    ${news.title}
+                                </div>
+                                <div class="desc">
+                                    ${news.content}
+                                </div>
+                                <div class="upDate fw-bold">
+                                    ${news.posted_date} | ${news.author}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-
-                <a href="" class="main-news m-2">
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-8">
-                            <div class="title fw-bold">
-                                TP.HCM lại 'cầu cứu' Chính phủ gỡ vướng dự án chống ngập 10.000 tỷ
-                            </div>
-                            <div class="desc">
-                                Chủ tịch UBND TP.HCM Phan Văn Mãi vừa ký văn bản kiến nghị Thủ tướng Chính phủ xem xét, chỉ đạo tháo gỡ các khó khăn vướng mắc tại dự án Giải quyết ngập do triều khu vực TP.HCM có xét đến yếu tố biến đổi khí hậu giai đoạn 1 (dự án chống ngập 10.000 tỉ đồng).
-                            </div>
-                            <div class="upDate fw-bold">
-                                25/09/2024 20:10 GMT+7 | Hà Mai
-                            </div>
-                        </div>
-                    </div>
-                </a>
+                    </a>
+                </c:forEach>
             </div>
             <div class="aside col-5">
-                <a href="chiTiet" class="aside-news m-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-9">
-                            <div class="title fw-bold">
-                                Đây là tiêu đề của 5 tin...
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </div>
-                            <div class="upDate fw-bold">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
+                <div class="row">
+                    <div class="col-3">
                     </div>
-                </a>
+                    <div class="col-9">
+                        <div class="title fw-bold">Top 5 tin nhiều view nhất</div>
+                    </div>
+                </div>
+                <c:forEach items="${listTopViewNews}" var="news">
+                    <a href="chiTiet?id=${news.id}" class="aside-news m-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="img/${news.img}" alt="" width="99%">
+                            </div>
+                            <div class="col-9">
+                                <div class="title fw-bold">
+                                    ${news.title}
+                                </div>
+                                <div class="desc">
+                                    ${news.content}
+                                </div>
+                                <div class="upDate fw-bold">
+                                    ${news.posted_date} | ${news.author}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
+                <div class="row">
+                    <div class="col-3">
+                    </div>
+                    <div class="col-9">
+                        <div class="title fw-bold">Top 5 tin mới nhất</div>
+                    </div>
+                </div>
+                <c:forEach items="${listLatestNews}" var="news">
+                    <a href="chiTiet?id=${news.id}" class="aside-news m-2">
+                        <div class="row">
+                            <div class="col-3">
+                                <img src="img/${news.img}" alt="" width="99%">
+                            </div>
+                            <div class="col-9">
+                                <div class="title fw-bold">
+                                        ${news.title}
+                                </div>
+                                <div class="desc">
+                                        ${news.content}
+                                </div>
+                                <div class="upDate fw-bold">
+                                        ${news.posted_date} | ${news.author}
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </c:forEach>
 
-                <a href="" class="aside-news m-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-9">
-                            <div class="title fw-bold">
-                                Đây là tiêu đề của 5 tin...
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </div>
-                            <div class="upDate fw-bold">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
-                    </div>
-                </a>
-
-                <a href="" class="aside-news m-2">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="img/TP.HCM lai 'cau cuu' chinh phu go vuong du an chong ngap 10.000 ty.webp" alt="" width="99%">
-                        </div>
-                        <div class="col-9">
-                            <div class="title fw-bold">
-                                Đây là tiêu đề của 5 tin...
-                            </div>
-                            <div class="desc">
-                                Đây là phần mô tả ngắn của tin tức Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </div>
-                            <div class="upDate fw-bold">
-                                Ngày đăng | Tác giả
-                            </div>
-                        </div>
-                    </div>
-                </a>
+<%--                <c:forEach items="${listRecentNews}" var="news">--%>
+<%--                    <a href="chiTiet?id=${news.id}" class="aside-news m-2">--%>
+<%--                        <div class="row">--%>
+<%--                            <div class="col-3">--%>
+<%--                                <img src="img/${news.img}" alt="" width="99%">--%>
+<%--                            </div>--%>
+<%--                            <div class="col-9">--%>
+<%--                                <div class="title fw-bold">--%>
+<%--                                        ${news.title}--%>
+<%--                                </div>--%>
+<%--                                <div class="desc">--%>
+<%--                                        ${news.content}--%>
+<%--                                </div>--%>
+<%--                                <div class="upDate fw-bold">--%>
+<%--                                        ${news.posted_date} | ${news.author}--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
+<%--                        </div>--%>
+<%--                    </a>--%>
+<%--                </c:forEach>--%>
             </div>
         </div>
     </div>

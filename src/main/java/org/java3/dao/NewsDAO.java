@@ -60,6 +60,16 @@ public class NewsDAO extends AbstractDAO<News, Object> {
         return selectBySql(sql);
     }
 
+    public List<News> selectTopViewNews() {
+        String sql = "SELECT TOP 5 * FROM NEWS ORDER BY VIEW_COUNT";
+        return selectBySql(sql);
+    }
+
+    public List<News> selectLatestNews() {
+        String sql = "SELECT TOP 5 * FROM NEWS ORDER BY POSTED_DATE";
+        return selectBySql(sql);
+    }
+
     @Override
     protected List<News> selectBySql(String sql, Object... args) {
         List<News> list = new ArrayList<>();
