@@ -45,11 +45,11 @@ public class XJdbc {
      * @param sql là câu lệnh SQL chứa có thể chứa tham số. Nó có thể là một lời gọi thủ tục lưu
      * @param args là danh sách các giá trị được cung cấp cho các tham số trong câu lệnh sql     *
      */
-    public static void executeUpdate(String sql, Object...args) {
+    public static int executeUpdate(String sql, Object...args) {
         try {
             PreparedStatement stmt = XJdbc.getStmt(sql, args);
             try {
-                stmt.executeUpdate();
+                return stmt.executeUpdate();
             }
             finally{
                 stmt.getConnection().close();
