@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -36,12 +37,70 @@
         </div>
     </div>
 
-    <div class="article container text-bg-success" style="padding: 300px;text-align: center;">
-        Đây là chức năng cho chức vụ quản trị hoặc phóng viên
+    <div class="article container">
+        <div class="row">
+            <div class="col-9 main">
+                <form action="quanTri/upload" method="post">
+                    <div class="form-group">
+                        <label for="author">Người đăng</label>
+                        <input type="email" class="form-control" id="author" value="${author.fullname}" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Tiêu đề</label>
+                        <input type="email" class="form-control" id="title" value="${news.title}">
+                    </div>
+                    <div class="form-group">
+                        <label for="img">Chọn ảnh</label>
+                        <input type="file" class="form-control-file" id="img">
+                    </div>
+                    <div class="form-group">
+                        <label for="categories">Thể loại</label>
+                        <select class="form-control" id="categories">
+                            <c:forEach items="${listCategories}" var="cat">
+                                <option value="${cat.id}" ${cat.id == news.categories_id?"selected":""}>${cat.name}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Chi tiết bản tin</label>
+                        <textarea class="form-control" id="content" rows="18">${news.content}</textarea>
+                    </div>
+                    <button formmethod="post" class="m-2">Đăng bài</button>
+                </form>
+            </div>
+            <div class="col-3 main">
+                <div class="form-group">
+                    <label for="searchNews">Search</label>
+                    <input type="text" class="form-control" id="searchNews">
+
+                    <div class="title fw-bold">Danh sách tin tức bạn đã đăng</div>
+                    <c:forEach items="${listNews}" var="news">
+                        <a href="quanTri?edit=${news.id}" class="main-news m-2">
+                            <div class="row">
+                                <div class="col-4">
+                                    <img src="img/${news.img}" alt="" width="99%">
+                                </div>
+                                <div class="col-8">
+                                    <div class="title fw-bold">
+                                            ${news.title}
+                                    </div>
+                                    <div class="desc">
+                                            ${news.content}
+                                    </div>
+                                    <div class="upDate fw-bold">
+                                            ${news.posted_date} | ${news.author}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </c:forEach>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="footer container text-bg-primary text-center">
-        Welcome <strong>Hoàng Thụy</strong> - Quản trị viên
+        Welcome <strong>${author.fullname}</strong> - ${author.role?"Quản trị viên":"Phóng viên"}
     </div>
 </div>
 </body>

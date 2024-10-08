@@ -70,6 +70,11 @@ public class NewsDAO extends AbstractDAO<News, Object> {
         return selectBySql(sql);
     }
 
+    public List<News> selectNewsByAuthor(String author) {
+        String sql = "SELECT N.* FROM NEWS N, USERS U WHERE AUTHOR = FULLNAME AND AUTHOR = ?";
+        return selectBySql(sql, author);
+    }
+
     @Override
     protected List<News> selectBySql(String sql, Object... args) {
         List<News> list = new ArrayList<>();
