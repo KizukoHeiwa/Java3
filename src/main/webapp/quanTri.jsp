@@ -20,7 +20,7 @@
         <a href="/" class="logo"><img src="img/logo.png" alt="" width="100px" class="left m-2"></a>
         <div class="center d-flex justify-content-around">
             <!-- <input type="text" name="search" placeholder="Nhập vào bản tin cần tìm kiếm & chỉnh sửa"> -->
-            <a href="#" class="utils">Công cụ quản lý</a>
+            <a href="/quanTri" class="utils">Đăng bài viết</a>
         </div>
         <div class="right d-flex justify-content-around">
             <a href="/" class="signin">Đăng xuất</a>
@@ -40,18 +40,19 @@
     <div class="article container">
         <div class="row">
             <div class="col-9 main">
-                <form action="quanTri/upload" method="post">
+                <form action="quanTri/${!isEdit?"upload":"edit"}" method="post">
                     <div class="form-group">
                         <label for="author">Người đăng</label>
-                        <input type="email" class="form-control" id="author" value="${author.fullname}" readonly>
+                        <input type="text" class="form-control" id="author" value="${author.fullname}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="title">Tiêu đề</label>
-                        <input type="email" class="form-control" id="title" value="${news.title}">
+                        <input type="text" class="form-control" id="title" value="${news.title}">
                     </div>
                     <div class="form-group">
                         <label for="img">Chọn ảnh</label>
-                        <input type="file" class="form-control-file" id="img">
+                        <input type="file" class="form-control-file m-2" id="img">
+                        <img src="img/${news.img}" alt="" width="99%">
                     </div>
                     <div class="form-group">
                         <label for="categories">Thể loại</label>
@@ -64,8 +65,10 @@
                     <div class="form-group">
                         <label for="content">Chi tiết bản tin</label>
                         <textarea class="form-control" id="content" rows="18">${news.content}</textarea>
+                        <label for="home">Tin đầu</label>
+                        <input type="checkbox" id="home" ${news.home?"checked":""}>
                     </div>
-                    <button formmethod="post" class="m-2">Đăng bài</button>
+                    <button formmethod="post" class="m-2">${!isEdit?"Đăng bài":"Cập nhật"}</button>
                 </form>
             </div>
             <div class="col-3 main">

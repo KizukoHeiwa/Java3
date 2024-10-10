@@ -16,6 +16,6 @@ public class chiTiet extends HttpServlet {
         req.setAttribute("mainNews", new NewsDAO().selectById(req.getParameter("id")));
         req.setAttribute("listTopViewNews", new NewsDAO().selectTopViewNews());
         req.setAttribute("listLatestNews", new NewsDAO().selectLatestNews());
-        req.getRequestDispatcher("chiTiet.jsp").forward(req, resp);
+        req.getRequestDispatcher("/chiTiet.jsp").forward(req, resp);
     }
 }

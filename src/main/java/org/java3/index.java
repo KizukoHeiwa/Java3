@@ -13,9 +13,9 @@ import java.io.IOException;
 public class index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("listNews", new NewsDAO().selectAll());
+        req.setAttribute("listNews", new NewsDAO().selectAllDesc());
         req.setAttribute("listTopViewNews", new NewsDAO().selectTopViewNews());
         req.setAttribute("listLatestNews", new NewsDAO().selectLatestNews());
-        req.getRequestDispatcher("index.jsp").forward(req, resp);
+        req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
 }
