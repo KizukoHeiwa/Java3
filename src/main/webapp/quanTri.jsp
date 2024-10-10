@@ -40,23 +40,24 @@
     <div class="article container">
         <div class="row">
             <div class="col-9 main">
-                <form action="quanTri/${!isEdit?"upload":"edit"}" method="post">
+                <form action="quanTri/${!isEdit?"upload":"edit"}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="author">Người đăng</label>
-                        <input type="text" class="form-control" id="author" value="${author.fullname}" readonly>
+                        <input name="author" type="text" class="form-control" id="author" value="${author.fullname}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="title">Tiêu đề</label>
-                        <input type="text" class="form-control" id="title" value="${news.title}">
+                        <input name="title" type="text" class="form-control" id="title" value="${news.title}">
                     </div>
                     <div class="form-group">
-                        <label for="img">Chọn ảnh</label>
-                        <input type="file" class="form-control-file m-2" id="img">
-                        <img src="img/${news.img}" alt="" width="99%">
+                        <label for="anh">Chọn ảnh</label>
+                        <input name="img" type="file" class="form-control-file m-2" id="anh">
+                        <img src="img/${news.img}" alt="" width="60%">
                     </div>
                     <div class="form-group">
                         <label for="categories">Thể loại</label>
-                        <select class="form-control" id="categories">
+                        <select name="categories" class="form-control" id="categories">
+                                <option value="0" selected disabled>Chọn thể loại</option>
                             <c:forEach items="${listCategories}" var="cat">
                                 <option value="${cat.id}" ${cat.id == news.categories_id?"selected":""}>${cat.name}</option>
                             </c:forEach>
@@ -64,9 +65,9 @@
                     </div>
                     <div class="form-group">
                         <label for="content">Chi tiết bản tin</label>
-                        <textarea class="form-control" id="content" rows="18">${news.content}</textarea>
+                        <textarea name="content" class="form-control" id="content" rows="18">${news.content}</textarea>
                         <label for="home">Tin đầu</label>
-                        <input type="checkbox" id="home" ${news.home?"checked":""}>
+                        <input name="home" type="checkbox" id="home" ${news.home?"checked":""}>
                     </div>
                     <button formmethod="post" class="m-2">${!isEdit?"Đăng bài":"Cập nhật"}</button>
                 </form>
