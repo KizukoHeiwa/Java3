@@ -25,7 +25,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.setBirthday(resultSet.getDate("birthday"));
 				employee.setPhoto(resultSet.getString("photo"));
 				employee.setSalary(resultSet.getDouble("salary"));
-				employee.setDepartmentid(resultSet.getString("departmentid"));
+				employee.setDepartment_id(resultSet.getString("department_id"));
 				entities.add(employee);
 			}
 			return entities;
@@ -49,7 +49,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.setBirthday(resultSet.getDate("birthday"));
 				employee.setPhoto(resultSet.getString("photo"));
 				employee.setSalary(resultSet.getDouble("salary"));
-				employee.setDepartmentid(resultSet.getString("departmentid"));
+				employee.setDepartment_id(resultSet.getString("department_id"));
 				return employee;
 			}
 		} catch (Exception e) {
@@ -70,7 +70,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.getBirthday(),
 				employee.getPhoto(),
 				employee.getSalary(),
-				employee.getDepartmentid()
+				employee.getDepartment_id()
 			};
 			Jdbc.executeUpdate(sql, values);
 		} catch (Exception e) {
@@ -81,7 +81,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 	@Override
 	public void update(Employee employee) {
 		String sql = "UPDATE Employees SET fullname=?, password=?, gender = ? , birthday = ? ," 
-				+ " photo = ? , salary= ?,  departmentid = ? "
+				+ " photo = ? , salary= ?,  department_id = ? "
 				+ " WHERE Id=?";
 		try {
 			Object[] values = { 		 
@@ -91,7 +91,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 				employee.getBirthday(),
 				employee.getPhoto(),
 				employee.getSalary(),
-				employee.getDepartmentid(),
+				employee.getDepartment_id(),
 				employee.getId()
 			};
 			Jdbc.executeUpdate(sql, values);

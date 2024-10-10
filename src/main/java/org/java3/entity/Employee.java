@@ -15,5 +15,5 @@ public class Employee {
 	Date birthday;
 	String photo;
 	Double salary;
-	String departmentid;
+	String department_id;
 }

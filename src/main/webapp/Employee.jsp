@@ -12,7 +12,7 @@
 	<c:url value="/employee" var="path"/>
 	<form action="${path}/upload" method="post" enctype="multipart/form-data">
 		<h2>Employee Form</h2>
-		<img src="/Java3NewLab7/images/${item.photo}" style="width:80px;height:70px;" /><br>
+		<img src="img/${item.photo}" style="width:80px;height:70px;" /><br>
 		ID : <input name="id" value="${item.id}"> <br>
 	    Full name : <input name="fullname" value="${item.fullname}"> <br>
 	    Password : <input name="password" value="${item.password}"> <br>
@@ -21,7 +21,7 @@
 		Gender :
 	    <input type="radio" name="gender" value="true" ${item.gender=='true'?'checked':''}> Nam
 	    <input type="radio" name="gender" value="false" ${item.gender=='false'?'checked':''}> Nữ <br>
-		DepartmentID : <input name="departmentid" value="${item.departmentid}"> <br>
+		DepartmentID : <input name="department_id" value="${item.department_id}"> <br>
 	
 	    Salary : <input name="salary" value="${item.salary}"> <br>
 		Photo 
@@ -61,7 +61,7 @@
 					<td>${employee.birthday}</td>
 					<td>${employee.salary}</td>
 					<td>${employee.photo}</td>
-					<td>${employee.departmentid}</td>
+					<td>${employee.department_id}</td>
 					<td><a href="${path}/edit/${employee.id}">Edit</a></td>
 				</tr>
 			</c:forEach>
