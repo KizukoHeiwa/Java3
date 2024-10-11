@@ -10,7 +10,9 @@
     <title>FPT Polytechnic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <style><%@include file="css/style.css"%></style>
+    <fmt:setLocale value="${(sessionScope.lang == null)?'vi_VN':''}${sessionScope.lang}" scope="request"/>
+    <fmt:setBundle basename="global" scope="request"/>
 </head>
 <body>
 <div class="container">
@@ -21,20 +23,24 @@
             <a href="#" class="utils">Utilities</a>
         </div>
         <div class="right d-flex justify-content-around">
-            <a href="quanTri" class="signin">Đăng nhập</a>
-            <a href="#" class="signup">Đăng ký</a>
+            <a href="?lang=vi_VN"><fmt:message key="menu.vietnamese"/></a>
+            <a href="?lang=en_US"><fmt:message key="menu.english"/></a>
+        </div>
+        <div class="right d-flex justify-content-around">
+            <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a>
+            <a href="#" class="signup"><fmt:message key="menu.signUp"/></a>
         </div>
     </div>
 
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
-            <a href="/">Trang chủ</a>
-            <a href="#">Văn hóa</a>
-            <a href="#">Kinh tế</a>
-            <a href="#">Thế giới</a>
-            <a href="#">Giáo dục</a>
-            <a href="#">Thể thao</a>
-            <a href="#">More</a>
+            <a href="/"><fmt:message key="menu.home"/></a>
+            <a href="/?category=VanHoa"><fmt:message key="menu.cultural"/></a>
+            <a href="/?category=KinhTe"><fmt:message key="menu.financial"/></a>
+            <a href="/?category=TheGioi"><fmt:message key="menu.international"/></a>
+            <a href="/?category=GiaoDuc"><fmt:message key="menu.education"/></a>
+            <a href="/?category=TheThao"><fmt:message key="menu.sports"/></a>
+            <a href="#"><fmt:message key="menu.more"/></a>
         </div>
     </div>
 
@@ -171,7 +177,7 @@
                     </div>
                 </div>
                 <div class="footerRightMenu">
-                    <span class="copyright">Hoang Thuy. All rights reserved. 2024</span>
+                    <span class="copyright">&copy; Hoang Thuy. All rights reserved. 2024</span>
                 </div>
             </div>
         </div>

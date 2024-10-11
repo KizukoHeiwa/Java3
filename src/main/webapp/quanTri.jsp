@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -12,7 +13,9 @@
     <title>FPT Polytechnic</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <style><%@include file="css/style.css"%></style>
+    <fmt:setLocale value="${(sessionScope.lang == null)?'vi_VN':''}${sessionScope.lang}" scope="request"/>
+    <fmt:setBundle basename="global" scope="request"/>
 </head>
 <body>
 <div class="container">
@@ -23,13 +26,13 @@
             <a href="/quanTri" class="utils">Đăng bài viết</a>
         </div>
         <div class="right d-flex justify-content-around">
-            <a href="/" class="signin">Đăng xuất</a>
+            <a href="/" class="signin"><fmt:message key="menu.signOut"/></a>
         </div>
     </div>
 
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
-            <a href="/">Trang chủ</a>
+            <a href="/"><fmt:message key="menu.home"/></a>
             <a href="#">Tin tức</a>
             <a href="#">Loại tin</a>
             <a href="#">Người dùng</a>
@@ -37,10 +40,13 @@
         </div>
     </div>
 
+    <c:set var="listNews" scope="session" value="${listNews}"/>
+    <c:set var="author" scope="session" value="${author}"/>
+
     <div class="article container">
         <div class="row">
             <div class="col-9 main">
-                <form action="quanTri/${!isEdit?"upload":"edit"}" method="post" enctype="multipart/form-data">
+                <form action="quanTri?${!isEdit?"upload":"edit="}${news.id}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="author">Người đăng</label>
                         <input name="author" type="text" class="form-control" id="author" value="${author.fullname}" readonly>
@@ -51,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label for="anh">Chọn ảnh</label>
-                        <input name="img" type="file" class="form-control-file m-2" id="anh">
+                        <input name="img" type="file" class="form-control-file m-2" id="anh"><br>
                         <img src="img/${news.img}" alt="" width="60%">
                     </div>
                     <div class="form-group">
@@ -70,6 +76,9 @@
                         <input name="home" type="checkbox" id="home" ${news.home?"checked":""}>
                     </div>
                     <button formmethod="post" class="m-2">${!isEdit?"Đăng bài":"Cập nhật"}</button>
+                    <c:if test="${isEdit}">
+                        <button formaction="quanTri?delete=${news.id}" class="m-2">Xóa bài</button>
+                    </c:if>
                 </form>
             </div>
             <div class="col-3 main">

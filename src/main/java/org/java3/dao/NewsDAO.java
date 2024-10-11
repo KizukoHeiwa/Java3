@@ -11,7 +11,7 @@ import java.util.List;
 public class NewsDAO extends AbstractDAO<News, Object> {
     @Override
     public void insert(News entity) {
-        String sql = "{CALL spNewsInsert(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "{CALL spNewsInsert(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getTitle(),
@@ -66,7 +66,7 @@ public class NewsDAO extends AbstractDAO<News, Object> {
     }
 
     public List<News> selectTopViewNews() {
-        String sql = "SELECT TOP 5 * FROM NEWS ORDER BY VIEW_COUNT";
+        String sql = "SELECT TOP 5 * FROM NEWS ORDER BY VIEW_COUNT DESC";
         return selectBySql(sql);
     }
 
@@ -78,6 +78,11 @@ public class NewsDAO extends AbstractDAO<News, Object> {
     public List<News> selectNewsByAuthor(String author) {
         String sql = "SELECT N.* FROM NEWS N, USERS U WHERE AUTHOR = FULLNAME AND U.ID = ?";
         return selectBySql(sql, author);
+    }
+
+    public List<News> selectNewsByCategory(String categoryId) {
+        String sql = "SELECT N.* FROM NEWS N, CATEGORIES C WHERE C.ID = CATEGORIES_ID AND C.ID =?";
+        return selectBySql(sql, categoryId);
     }
 
     @Override

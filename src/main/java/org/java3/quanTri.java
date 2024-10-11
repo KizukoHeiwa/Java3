@@ -1,5 +1,6 @@
 package org.java3;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
@@ -25,14 +26,13 @@ import java.util.Date;
 @MultipartConfig
 @WebServlet({"/quanTri",
         "/quanTri/edit",
-        "/quanTri/upload"
+        "/quanTri/upload",
+        "/quanTri/delete"
 })
 public class quanTri extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor("20240921121534"));
         req.setAttribute("listCategories", new CategoriesDAO().selectAll());
-        req.setAttribute("author", new UsersDAO().selectById("20240921121534"));
         req.setAttribute("isEdit", false);
 
         if (req.getParameter("edit") != null){
@@ -45,43 +45,79 @@ public class quanTri extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String date = XDate.toString(new Date(), "yyyyMMddHHmmss");
-        System.out.println(date);
         NewsDAO newsDAO = new NewsDAO();
         News news = new News();
-        news.setId(XDate.toString(new Date(), "yyyyMMddHHmmss"));
-        news.setTitle(req.getParameter("title"));
-        news.setContent(req.getParameter("content"));
+        if (req.getQueryString().contains("delete")) {
+            String id = req.getParameter("delete");
+            newsDAO.delete(id);
+            resp.sendRedirect(req.getContextPath() + "/quanTri");
+        }
+        else if (req.getQueryString().contains("upload")) {
+            String date = XDate.toString(new Date(), "yyyyMMddHHmmss");
+
+            news.setId(XDate.toString(new Date(), "yyyyMMddHHmmss"));
+            news.setTitle(req.getParameter("title"));
+            news.setContent(req.getParameter("content"));
 
 //        Collection<Part> ListFiles = req.getParts();
 //        Part file = ListFiles.iterator().next();
 
-        Part file = req.getPart("img");
+            Part file = req.getPart("img");
 
-        String path = "/static/files/" + file.getSubmittedFileName();
-        String filename = req.getServletContext().getRealPath(path);
-        Path path1 = Paths.get(filename);
-        Files.deleteIfExists(path1);
-        Files.createDirectories(path1);
-        file.write(filename);
+            if (!file.getSubmittedFileName().isEmpty()) {
+                String path = "/static/files/" + file.getSubmittedFileName();
+                String filename = req.getServletContext().getRealPath(path);
+                Path path1 = Paths.get(filename);
+                Files.deleteIfExists(path1);
+                Files.createDirectories(path1);
+                file.write(filename);
 
-        news.setImg(file.getSubmittedFileName());
+                news.setImg(file.getSubmittedFileName());
+            }
+
 
 //        if (ListFiles.isEmpty()) {
 //            news.setImg("");
 //            return;
 //        }
 
-        news.setPosted_date(new Timestamp(System.currentTimeMillis()));
-        news.setAuthor(req.getParameter("author"));
-        news.setView_count(0);
-        news.setCategories_id(req.getParameter("categories"));
-        news.setHome(Boolean.parseBoolean(req.getParameter("home")));
+            news.setPosted_date(XDate.toDate(date, "yyyyMMddhhmmss"));
+            news.setAuthor(req.getParameter("author"));
+            news.setView_count(0);
+            news.setCategories_id(req.getParameter("categories"));
+            news.setHome(Boolean.parseBoolean(req.getParameter("home")));
 
-        System.out.println(news.getTitle() + " - " + news.getImg() + " - " + news.getContent() + " - " + news.getAuthor() + " - " + news.getPosted_date() + " - " + news.getCategories_id());
+            newsDAO.insert(news);
+            resp.sendRedirect(req.getContextPath() + "/quanTri?edit=" + news.getId());
+        }
+        else if (req.getQueryString().contains("edit")) {
+            String id = req.getParameter("edit");
+            news = newsDAO.selectById(id);
 
-        newsDAO.insert(news);
+            news.setTitle(req.getParameter("title"));
+            news.setContent(req.getParameter("content"));
 
-        doGet(req, resp);
+            Part file = req.getPart("img");
+
+            if (!file.getSubmittedFileName().isEmpty()) {
+                String path = "/static/files/" + file.getSubmittedFileName();
+                String filename = req.getServletContext().getRealPath(path);
+                Path path1 = Paths.get(filename);
+                Files.deleteIfExists(path1);
+                Files.createDirectories(path1);
+                file.write(filename);
+
+                news.setImg(file.getSubmittedFileName());
+            }
+
+            news.setPosted_date(XDate.toDate(id, "yyyyMMddhhmmss"));
+            news.setAuthor(req.getParameter("author"));
+            news.setView_count(0);
+            news.setCategories_id(req.getParameter("categories"));
+            news.setHome(Boolean.parseBoolean(req.getParameter("home")));
+
+            newsDAO.update(news);
+            resp.sendRedirect(req.getContextPath() + "/quanTri?edit=" + news.getId());
+        }
     }
 }

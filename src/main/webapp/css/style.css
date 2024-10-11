@@ -24,6 +24,7 @@ a{
 
 .article{
     color: black;
+    min-height: 50vh;
 }
 .title{
     font-size: 20px;
@@ -91,3 +92,12 @@ a{
     font-weight: bold;
     font-size: 15px;
 }
+.message{
+    font-size: 13px;
+    /*font-weight: bold;*/
+    font-style: italic;
+}
+fieldset{
+    border: 1px solid black;
+}
+
