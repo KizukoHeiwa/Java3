@@ -83,7 +83,7 @@ public class EmployeeServlet extends HttpServlet {
 			try {
 				BeanUtils.populate(form, request.getParameterMap());
 				form.setPhoto(part.getSubmittedFileName());
-				upload(request,part,"images");
+				upload(request,part,"img");
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

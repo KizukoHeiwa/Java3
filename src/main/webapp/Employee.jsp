@@ -12,7 +12,7 @@
 	<c:url value="/employee" var="path"/>
 	<form action="${path}/upload" method="post" enctype="multipart/form-data">
 		<h2>Employee Form</h2>
-		<img src="img/${item.photo}" style="width:80px;height:70px;" /><br>
+		<img src="/img/${item.photo}" style="width:80px;height:70px;" /><br>
 		ID : <input name="id" value="${item.id}"> <br>
 	    Full name : <input name="fullname" value="${item.fullname}"> <br>
 	    Password : <input name="password" value="${item.password}"> <br>
