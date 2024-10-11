@@ -39,15 +39,19 @@ public class EmployeeServlet extends HttpServlet {
 	Employee form = new Employee();
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
-		Part part = request.getPart("photo"); try { BeanUtils.populate(form,
-		request.getParameterMap()); form.setPhoto(part.getSubmittedFileName()); }
-		catch (IllegalAccessException | InvocationTargetException e) {
-		e.printStackTrace(); }
+//		Part part = request.getPart("photo");
+//		try {
+//			BeanUtils.populate(form, request.getParameterMap());
+//			form.setPhoto(part.getSubmittedFileName());
+//		}
+//		catch (IllegalAccessException | InvocationTargetException e) {
+//			e.printStackTrace();
+//		}
 
 		EmployeeDAO dao = new EmployeeDAOImpl();
 		String path = request.getServletPath();
 		DateTimeConverter dtc = new DateConverter(new Date());
-		dtc.setPattern("MM/dd/yy");
+		dtc.setPattern("dd/MM/yy");
 		ConvertUtils.register(dtc, Date.class);
 		
 		if (path.contains("edit")) {
@@ -56,7 +60,7 @@ public class EmployeeServlet extends HttpServlet {
 		} else if (path.contains("create")) {
 			try {
 				BeanUtils.populate(form, request.getParameterMap());
-//				Part part = request.getPart("photo");
+				Part part = request.getPart("photo");
 				form.setPhoto(part.getSubmittedFileName());
 				dao.create(form);
 				form = new Employee();
@@ -66,7 +70,7 @@ public class EmployeeServlet extends HttpServlet {
 			}
 		} else if (path.contains("update")) {
 			try {
-//				Part part = request.getPart("photo");
+				Part part = request.getPart("photo");
 				BeanUtils.populate(form, request.getParameterMap());
 				form.setPhoto(part.getSubmittedFileName());
 				dao.update(form);
@@ -75,7 +79,7 @@ public class EmployeeServlet extends HttpServlet {
 			dao.deleteById(form.getId());
 			form = new Employee();
 		} else if (path.contains("upload")){
-//			Part part = request.getPart("photo");
+			Part part = request.getPart("photo");
 			try {
 				BeanUtils.populate(form, request.getParameterMap());
 				form.setPhoto(part.getSubmittedFileName());
