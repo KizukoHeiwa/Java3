@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>FPT Polytechnic</title>
 </head>
 <body>
 	<c:url value="/employee" var="path"/>
@@ -16,17 +16,15 @@
 		ID : <input name="id" value="${item.id}"> <br>
 	    Full name : <input name="fullname" value="${item.fullname}"> <br>
 	    Password : <input name="password" value="${item.password}"> <br>
-	    <fmt:formatDate var = "bd" value="${item.birthday}" pattern="dd-MM-yyyy" /> 
-	    Birth Day :<input name="birthday" value="${bd}"> <br>
 		Gender :
-	    <input type="radio" name="gender" value="true" ${item.gender=='true'?'checked':''}> Nam
-	    <input type="radio" name="gender" value="false" ${item.gender=='false'?'checked':''}> Nữ <br>
-		DepartmentID : <input name="department_id" value="${item.department_id}"> <br>
-	
+	    <input type="radio" name="gender" id="gender" value="true" ${item.gender?'checked':''}> Nam
+	    <input type="radio" name="gender" id="gender" value="false" ${!item.gender?'checked':''}> Nữ <br>
+	    <fmt:formatDate var = "bd" value="${item.birthday}" pattern="dd-MM-yyyy" />
+	    Birth Day :<input name="birthday" value="${bd}"> <br>
 	    Salary : <input name="salary" value="${item.salary}"> <br>
-		Photo 
-		<input type="file" name="photo" value="${item.photo}"
-			onchange="this.form.submit()"/>
+		DepartmentID : <input name="department_id" value="${item.department_id}"> <br>
+		Photo
+		<input type="file" name="photo" value="${item.photo}"/>
 	    <hr>
 		<button formaction="${path}/create">Create</button>
 		<button formaction="${path}/update">Update</button>

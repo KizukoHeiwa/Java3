@@ -62,6 +62,7 @@ public class EmployeeServlet extends HttpServlet {
 				BeanUtils.populate(form, request.getParameterMap());
 				Part part = request.getPart("photo");
 				form.setPhoto(part.getSubmittedFileName());
+				upload(request,part,"img");
 				dao.create(form);
 				form = new Employee();
 			} catch (Exception e) {
@@ -72,9 +73,15 @@ public class EmployeeServlet extends HttpServlet {
 			try {
 				Part part = request.getPart("photo");
 				BeanUtils.populate(form, request.getParameterMap());
-				form.setPhoto(part.getSubmittedFileName());
+				if (!(part.getSubmittedFileName().isEmpty())) {
+					form.setPhoto(part.getSubmittedFileName());
+					upload(request,part,"img");
+				}
+				else {
+					form.setPhoto(dao.findById(form.getId()).getPhoto());
+				}
 				dao.update(form);
-			} catch (Exception e) {	}		
+			} catch (Exception e) {	}
 		} else if (path.contains("delete")) {
 			dao.deleteById(form.getId());
 			form = new Employee();
