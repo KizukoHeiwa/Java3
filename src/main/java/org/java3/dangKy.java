@@ -25,7 +25,7 @@ public class dangKy extends HttpServlet {
         user.setPassword(req.getParameter("password"));
         user.setFullname(req.getParameter("hoTen"));
         user.setFullname(req.getParameter("fullname"));
-        user.setBirthday(XDate.toDate(req.getParameter("birthday"), "dd/MM/yyyy"));
+        user.setBirthday(XDate.toDate(req.getParameter("birthday"), "yyyy-MM-dd"));
         user.setGender(req.getParameter("gender").equals("Nam"));
         user.setMobile(req.getParameter("mobile"));
         user.setEmail(req.getParameter("email"));

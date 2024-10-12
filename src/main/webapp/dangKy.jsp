@@ -26,7 +26,7 @@
         </div>
         <div class="right d-flex justify-content-around">
             <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a>
-            <a href="#" class="signup"><fmt:message key="menu.signUp"/></a>
+            <a href="dangKy" class="signup"><fmt:message key="menu.signUp"/></a>
         </div>
     </div>
 
@@ -56,16 +56,16 @@
                 </div>
                 <div class="form-group">
                     <label for="fullname">Họ và tên</label>
-                    <input name="fullname" type="text" class="form-control" id="fullname" value="${param.hoTen}">
+                    <input name="fullname" type="text" class="form-control" id="fullname" value="${param.fullname}">
                 </div>
                 <div class="form-group">
                     <label for="birthday">Ngày sinh</label>
-                    <input name="birthday" type="date" class="form-control" id="birthday" value="${param.birthday}">
+                    <input name="birthday" type="date" class="form-control" id="birthday" value="${param.birthday}" pattern="dd/MM/yyyy">
                 </div>
                 <div class="form-group">
                     <label>Giới tính
-                        <input name="gender" type="radio" class="form-control" value="${param.gender?"Nam":""}">
-                        <input name="gender" type="radio" class="form-control" value="${!param.gender?"Nữ":"Nam"}">
+                        <input name="gender" type="radio" value="Nam" checked>Nam
+                        <input name="gender" type="radio" value="Nữ">Nữ
                     </label>
                 </div>
                 <div class="form-group">

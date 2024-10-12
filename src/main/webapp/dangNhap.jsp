@@ -26,7 +26,7 @@
         </div>
         <div class="right d-flex justify-content-around">
             <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a>
-            <a href="#" class="signup"><fmt:message key="menu.signUp"/></a>
+            <a href="dangKy" class="signup"><fmt:message key="menu.signUp"/></a>
         </div>
     </div>
 
@@ -52,7 +52,12 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Mật khẩu</label>
-                    <input name="password" type="password" class="form-control" id="password" value="">
+                    <input name="password" type="password" class="form-control" id="password" value="${password}">
+                </div>
+                <div class="form-group">
+                    <label for="remember-me">Remember me?
+                        <input name="remember-me" type="checkbox" id="remember-me" checked>
+                    </label>
                 </div>
                 <div class="form-group text-danger">
                     <span class="message">${message}</span>

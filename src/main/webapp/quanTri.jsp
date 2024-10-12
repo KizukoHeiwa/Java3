@@ -40,76 +40,34 @@
         </div>
     </div>
 
-    <c:set var="listNews" scope="session" value="${listNews}"/>
-    <c:set var="author" scope="session" value="${author}"/>
+    <div class="article container mt-5 w-75">
+        <table>
+            <thead>
+            <tr>
+                <td>Username</td>
+                <td>Họ và tên</td>
+                <td>Ngày sinh</td>
+                <td>Giới tính</td>
+                <td>Số điện thoại</td>
+                <td>Email</td>
+                <td>Thao tác</td>
+            </tr>
+            </thead>
 
-    <div class="article container">
-        <div class="row">
-            <div class="col-9 main">
-                <form action="quanTri?${!isEdit?"upload":"edit="}${news.id}" method="post" enctype="multipart/form-data">
-                    <div class="form-group">
-                        <label for="author">Người đăng</label>
-                        <input name="author" type="text" class="form-control" id="author" value="${author.fullname}" readonly>
-                    </div>
-                    <div class="form-group">
-                        <label for="title">Tiêu đề</label>
-                        <input name="title" type="text" class="form-control" id="title" value="${news.title}">
-                    </div>
-                    <div class="form-group">
-                        <label for="anh">Chọn ảnh</label>
-                        <input name="img" type="file" class="form-control-file m-2" id="anh"><br>
-                        <img src="img/${news.img}" alt="" width="60%">
-                    </div>
-                    <div class="form-group">
-                        <label for="categories">Thể loại</label>
-                        <select name="categories" class="form-control" id="categories">
-                                <option value="0" selected disabled>Chọn thể loại</option>
-                            <c:forEach items="${listCategories}" var="cat">
-                                <option value="${cat.id}" ${cat.id == news.categories_id?"selected":""}>${cat.name}</option>
-                            </c:forEach>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="content">Chi tiết bản tin</label>
-                        <textarea name="content" class="form-control" id="content" rows="18">${news.content}</textarea>
-                        <label for="home">Tin đầu</label>
-                        <input name="home" type="checkbox" id="home" ${news.home?"checked":""}>
-                    </div>
-                    <button formmethod="post" class="m-2">${!isEdit?"Đăng bài":"Cập nhật"}</button>
-                    <c:if test="${isEdit}">
-                        <button formaction="quanTri?delete=${news.id}" class="m-2">Xóa bài</button>
-                    </c:if>
-                </form>
-            </div>
-            <div class="col-3 main">
-                <div class="form-group">
-                    <label for="searchNews">Search</label>
-                    <input type="text" class="form-control" id="searchNews">
-
-                    <div class="title fw-bold">Danh sách tin tức bạn đã đăng</div>
-                    <c:forEach items="${listNews}" var="news">
-                        <a href="quanTri?edit=${news.id}" class="main-news m-2">
-                            <div class="row">
-                                <div class="col-4">
-                                    <img src="img/${news.img}" alt="" width="99%">
-                                </div>
-                                <div class="col-8">
-                                    <div class="title fw-bold">
-                                            ${news.title}
-                                    </div>
-                                    <div class="desc">
-                                            ${news.content}
-                                    </div>
-                                    <div class="upDate fw-bold">
-                                            ${news.posted_date} | ${news.author}
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </c:forEach>
-                </div>
-            </div>
-        </div>
+            <tbody>
+            <c:forEach items="${listUsers}" var="user">
+                <tr>
+                    <td>${user.id}</td>
+                    <td>${user.fullname}</td>
+                    <td>${user.birthday}</td>
+                    <td>${user.gender?"Nam":"Nữ"}</td>
+                    <td>${user.mobile}</td>
+                    <td>${user.email}</td>
+                    <td><a href="quanTri?delete=${user.id}">Xóa</a></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
     </div>
 
     <div class="footer container text-bg-primary text-center">

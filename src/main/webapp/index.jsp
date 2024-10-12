@@ -28,7 +28,7 @@
         </div>
         <div class="right d-flex justify-content-around">
             <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a>
-            <a href="#" class="signup"><fmt:message key="menu.signUp"/></a>
+            <a href="dangKy" class="signup"><fmt:message key="menu.signUp"/></a>
         </div>
     </div>
 

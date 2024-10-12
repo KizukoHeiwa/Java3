@@ -11,7 +11,7 @@ import java.util.List;
 public class UsersDAO extends AbstractDAO<Users, Object>{
     @Override
     public void insert(Users entity) {
-        String sql = "{CALL spUsersInsert(?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "{CALL spUsersInsert(?, ?, ?, ?, ?, ?, ?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getPassword(),
