@@ -41,8 +41,8 @@ public class dangNhap extends HttpServlet {
         Users user = usersDAO.selectById(username);
         if (user != null && user.getPassword().equalsIgnoreCase(password)) {
 
+            req.getSession().setAttribute("username", username); // session
             if(req.getParameter("remember-me") != null) {
-                req.getSession().setAttribute("username", username); // session
                 byte[] bytes = (username+","+password).getBytes();
                 String userInfo =Base64.encodeBase64String(bytes);
                 Cookie cookie = new Cookie("user", userInfo);
