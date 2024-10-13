@@ -6,6 +6,8 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.java3.dao.NewsDAO;
+import org.java3.dao.NewslettersDAO;
+import org.java3.entity.Newsletters;
 
 import java.io.IOException;
 
@@ -31,12 +33,20 @@ public class index extends HttpServlet {
             String from = "h.thuy7605@gmail.com";
             String to = req.getParameter("to");
             String subject = "Hoàng Thụy Assignment Java 3";
-            String body = req.getParameter("Cảm ơn bạn đã điền email để nhận các tin tức mới nhất từ chúng tôi");
+            String body = "Cảm ơn bạn đã điền email để nhận các tin tức mới nhất từ chúng tôi";
 
             Mailer.sendEmail(from, to, subject, body);
+
+            if (new NewslettersDAO().selectById(req.getParameter("to")) == null) {
+                Newsletters newsletters = new Newsletters();
+                newsletters.setEmail(req.getParameter("to"));
+                newsletters.setEnabled(true);
+                new NewslettersDAO().insert(newsletters);
+            }
         }
         catch (Exception e) {
             e.printStackTrace();
         }
+        resp.sendRedirect("/");
     }
 }

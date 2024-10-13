@@ -171,7 +171,7 @@
             <div class="footerRight col-4">
                 <form method="post">
                     <div class="footerRightMenu">
-                        <h1 class="fMenuTitle">Newsletter</h1>
+                        <h1 class="fMenuTitle">Newsletters</h1>
                         <div class="fMail">
                             <input name="to" type="text" placeholder="your@email.com" class="fInput">
                             <button class="fButton">Send</button>

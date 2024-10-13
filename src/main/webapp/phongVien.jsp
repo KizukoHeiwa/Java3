@@ -39,9 +39,9 @@
             <a href="/"><fmt:message key="menu.home"/></a>
             <a href="phongVien">Tin tức</a>
             <c:if test="${user.role}">
-                <a href="#">Loại tin</a>
+                <a href="categories">Loại tin</a>
                 <a href="quanTri">Người dùng</a>
-                <a href="#">Newsletter</a>
+                <a href="newsletters">Newsletter</a>
             </c:if>
         </div>
     </div>

@@ -46,31 +46,21 @@
         </div>
     </div>
 
-    <div class="article container mt-5 w-75">
+    <div class="article container mt-5 w-50">
         <form method="post">
             <table class="table">
                 <thead>
                 <tr>
-                    <td>Username</td>
-                    <td>Họ và tên</td>
-                    <td>Ngày sinh</td>
-                    <td>Giới tính</td>
-                    <td>Số điện thoại</td>
                     <td>Email</td>
-                    <td>Thao tác</td>
+                    <td>Trạng thái sử dụng</td>
                 </tr>
                 </thead>
 
                 <tbody>
-                <c:forEach items="${listUsers}" var="user">
+                <c:forEach items="${listNewsletters}" var="newsletter">
                     <tr>
-                        <td>${user.id}</td>
-                        <td>${user.fullname}</td>
-                        <td>${user.birthday}</td>
-                        <td>${user.gender?"Nam":"Nữ"}</td>
-                        <td>${user.mobile}</td>
-                        <td>${user.email}</td>
-                        <td><button value="quanTri?delete=${user.id}" formaction="quanTri?delete=${user.id}">Xóa</button></td>
+                        <td>${newsletter.email}</td>
+                        <td><button formaction="newsletters?update=${newsletter.email}">${newsletter.enabled?"Bật":"Tắt"}</button></td>
                     </tr>
                 </c:forEach>
                 </tbody>

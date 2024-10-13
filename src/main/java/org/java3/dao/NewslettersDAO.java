@@ -11,7 +11,7 @@ import java.util.List;
 public class NewslettersDAO extends AbstractDAO<Newsletters, Object> {
     @Override
     public void insert(Newsletters entity) {
-        String sql = "{CALL spNewslettersInsert(?, ?)";
+        String sql = "{CALL spNewslettersInsert(?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getEmail(),
                 entity.isEnabled());
@@ -19,7 +19,7 @@ public class NewslettersDAO extends AbstractDAO<Newsletters, Object> {
 
     @Override
     public void update(Newsletters entity) {
-        String sql = "{CALL spNewslettersUpdate(?, ?)";
+        String sql = "{CALL spNewslettersUpdate(?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getEmail(),
                 entity.isEnabled());

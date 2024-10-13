@@ -11,7 +11,7 @@ import java.util.List;
 public class CategoriesDAO extends AbstractDAO<Categories, Object>{
     @Override
     public void insert(Categories entity) {
-        String sql = "{CALL spCategoriesInsert(?, ?)";
+        String sql = "{CALL spCategoriesInsert(?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getName());
