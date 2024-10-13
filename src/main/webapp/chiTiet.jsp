@@ -160,16 +160,18 @@
                 </div>
             </div>
             <div class="footerRight col-4">
-                <div class="footerRightMenu">
-                    <h1 class="fMenuTitle">Keep Contact With Me!</h1>
-                    <div class="fMail">
-                        <input type="text" placeholder="your@email.com" class="fInput">
-                        <button class="fButton">Send!</button>
+                <form method="post">
+                    <div class="footerRightMenu">
+                        <h1 class="fMenuTitle">Newsletter</h1>
+                        <div class="fMail">
+                            <input name="to" type="text" placeholder="your@email.com" class="fInput">
+                            <button class="fButton">Send</button>
+                        </div>
                     </div>
-                </div>
-                <div class="footerRightMenu">
-                    <span class="copyright">&copy; Hoang Thuy. All rights reserved. 2024</span>
-                </div>
+                    <div class="footerRightMenu">
+                        <span class="copyright">&copy; Hoang Thuy. All rights reserved. 2024</span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

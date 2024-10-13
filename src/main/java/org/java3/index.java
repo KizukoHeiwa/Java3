@@ -24,4 +24,19 @@ public class index extends HttpServlet {
         }
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try {
+            String from = "h.thuy7605@gmail.com";
+            String to = req.getParameter("to");
+            String subject = "Hoàng Thụy Assignment Java 3";
+            String body = req.getParameter("Cảm ơn bạn đã điền email để nhận các tin tức mới nhất từ chúng tôi");
+
+            Mailer.sendEmail(from, to, subject, body);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
