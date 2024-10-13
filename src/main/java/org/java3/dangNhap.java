@@ -58,12 +58,14 @@ public class dangNhap extends HttpServlet {
                 resp.addCookie(cookie); // cookie
             }
 
+            req.setAttribute("user", new UsersDAO().selectById(username));
+            req.setAttribute("listCategories", new CategoriesDAO().selectAll());
             if (user.isRole()) {
-                resp.sendRedirect("/quanTri");
+                req.setAttribute("listUsers", usersDAO.selectAllNotRole());
+                req.getRequestDispatcher("/quanTri.jsp").forward(req, resp);
             }
             else {
                 req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
-                req.setAttribute("author", new UsersDAO().selectById(username));
                 req.getRequestDispatcher("/phongVien.jsp").forward(req, resp);
             }
         }

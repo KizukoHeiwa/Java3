@@ -9,6 +9,7 @@ import org.java3.dao.CategoriesDAO;
 import org.java3.dao.NewsDAO;
 import org.java3.dao.UsersDAO;
 import org.java3.entity.News;
+import org.java3.entity.Users;
 import org.java3.utils.XDate;
 
 import java.io.IOException;
@@ -24,6 +25,7 @@ import java.util.Date;
 })
 public class phongVien extends HttpServlet {
     String username = "";
+    Users user = new Users();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Cookie[] cookies = req.getCookies();
@@ -38,8 +40,16 @@ public class phongVien extends HttpServlet {
             }
         }
 
+        user = new UsersDAO().selectById(username);
+
+        if (user.isRole()) {
+            req.setAttribute("user", new UsersDAO().selectAll());
+        }
+        else {
+            req.setAttribute("user", user);
+        }
+
         req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
-        req.setAttribute("author", new UsersDAO().selectById(username));
         req.setAttribute("isEdit", false);
         req.setAttribute("listCategories", new CategoriesDAO().selectAll());
 
@@ -60,15 +70,13 @@ public class phongVien extends HttpServlet {
             newsDAO.delete(id);
             resp.sendRedirect(req.getContextPath() + "/phongVien");
         }
-        else if (req.getQueryString().contains("upload")) {
+        else {
             String date = XDate.toString(new Date(), "yyyyMMddHHmmss");
-
-            news.setId(XDate.toString(new Date(), "yyyyMMddHHmmss"));
             news.setTitle(req.getParameter("title"));
             news.setContent(req.getParameter("content"));
 
-//        Collection<Part> ListFiles = req.getParts();
-//        Part file = ListFiles.iterator().next();
+//            Collection<Part> ListFiles = req.getParts();
+//            Part file = ListFiles.iterator().next();
 
             Part file = req.getPart("img");
 
@@ -83,49 +91,28 @@ public class phongVien extends HttpServlet {
                 news.setImg(file.getSubmittedFileName());
             }
 
-
-//        if (ListFiles.isEmpty()) {
-//            news.setImg("");
-//            return;
-//        }
+//            if (ListFiles.isEmpty()) {
+//                news.setImg("");
+//                return;
+//            }
 
             news.setPosted_date(XDate.toDate(date, "yyyyMMddhhmmss"));
             news.setAuthor(req.getParameter("author"));
-            news.setView_count(0);
             news.setCategories_id(req.getParameter("categories"));
-            news.setHome(Boolean.parseBoolean(req.getParameter("home")));
+            news.setHome(req.getParameter("home") != null);
 
-            newsDAO.insert(news);
-            resp.sendRedirect(req.getContextPath() + "/phongVien?edit=" + news.getId());
-        }
-        else if (req.getQueryString().contains("edit")) {
-            String id = req.getParameter("edit");
-            news = newsDAO.selectById(id);
+            if (req.getQueryString().contains("upload")) {
+                news.setId(XDate.toString(new Date(), "yyyyMMddHHmmss"));
+                news.setView_count(0);
 
-            news.setTitle(req.getParameter("title"));
-            news.setContent(req.getParameter("content"));
-
-            Part file = req.getPart("img");
-
-            if (!file.getSubmittedFileName().isEmpty()) {
-                String path = "/static/files/" + file.getSubmittedFileName();
-                String filename = req.getServletContext().getRealPath(path);
-                Path path1 = Paths.get(filename);
-                Files.deleteIfExists(path1);
-                Files.createDirectories(path1);
-                file.write(filename);
-
-                news.setImg(file.getSubmittedFileName());
+                newsDAO.insert(news);
+                resp.sendRedirect(req.getContextPath() + "/phongVien?edit=" + news.getId());
             }
-
-            news.setPosted_date(XDate.toDate(id, "yyyyMMddhhmmss"));
-            news.setAuthor(req.getParameter("author"));
-            news.setView_count(0);
-            news.setCategories_id(req.getParameter("categories"));
-            news.setHome(Boolean.parseBoolean(req.getParameter("home")));
-
-            newsDAO.update(news);
-            resp.sendRedirect(req.getContextPath() + "/phongVien?edit=" + news.getId());
+            else if (req.getQueryString().contains("edit")) {
+                news.setId(req.getParameter("edit"));
+                newsDAO.update(news);
+                resp.sendRedirect(req.getContextPath() + "/phongVien?edit=" + news.getId());
+            }
         }
     }
 }

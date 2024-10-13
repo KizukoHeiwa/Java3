@@ -52,6 +52,11 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
         return !list.isEmpty() ? list.get(0) : null;
     }
 
+    public List<Users> selectAllNotRole() {
+        String sql = "SELECT * FROM USERS WHERE ROLE = 0";
+        return selectBySql(sql);
+    }
+
     @Override
     public List<Users> selectAll() {
         String sql = "{CALL spUsersSelectAll}";

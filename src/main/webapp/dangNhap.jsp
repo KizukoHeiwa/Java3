@@ -33,11 +33,11 @@
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
             <a href="/"><fmt:message key="menu.home"/></a>
-            <a href="#"><fmt:message key="menu.cultural"/></a>
-            <a href="#"><fmt:message key="menu.financial"/></a>
-            <a href="#"><fmt:message key="menu.international"/></a>
-            <a href="#"><fmt:message key="menu.education"/></a>
-            <a href="#"><fmt:message key="menu.sports"/></a>
+            <a href="/?category=VanHoa"><fmt:message key="menu.cultural"/></a>
+            <a href="/?category=KinhTe"><fmt:message key="menu.financial"/></a>
+            <a href="/?category=TheGioi"><fmt:message key="menu.international"/></a>
+            <a href="/?category=GiaoDuc"><fmt:message key="menu.education"/></a>
+            <a href="/?category=TheThao"><fmt:message key="menu.sports"/></a>
             <a href="#"><fmt:message key="menu.more"/></a>
         </div>
     </div>

@@ -33,15 +33,12 @@
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
             <a href="/"><fmt:message key="menu.home"/></a>
-            <a href="#">Tin tức</a>
-            <a href="#">Loại tin</a>
-            <a href="#">Người dùng</a>
-            <a href="#">Newsletter</a>
+            <a href="quanTri">Tin tức</a>
         </div>
     </div>
 
     <c:set var="listNews" scope="session" value="${listNews}"/>
-    <c:set var="author" scope="session" value="${author}"/>
+    <c:set var="user" scope="session" value="${user}"/>
 
     <div class="article container">
         <div class="row">
@@ -49,8 +46,7 @@
                 <form action="phongVien?${!isEdit?"upload":"edit="}${news.id}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="author">Người đăng</label>
-                        <input name="author" type="text" class="form-control" id="author" value="${author.fullname}" readonly>
-                        <input name="username" type="text" class="form-control" id="username" value="${author.id}" hidden="hidden" readonly>
+                        <input name="author" type="text" class="form-control" id="author" value="${user.fullname}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="title">Tiêu đề</label>
@@ -87,7 +83,7 @@
                     <label for="searchNews">Search</label>
                     <input type="text" class="form-control" id="searchNews">
 
-                    <div class="title fw-bold">Danh sách tin tức bạn đã đăng</div>
+                    <div class="title fw-bold">Danh sách tin tức ${user.role?"":"bạn đã đăng"}</div>
                     <c:forEach items="${listNews}" var="news">
                         <a href="phongVien?edit=${news.id}" class="main-news m-2">
                             <div class="row">
@@ -114,7 +110,7 @@
     </div>
 
     <div class="footer container text-bg-primary text-center">
-        Welcome <strong>${author.fullname}</strong> - ${author.role?"Quản trị viên":"Phóng viên"}
+        Welcome <strong>${user.fullname}</strong> - ${user.role?"Quản trị viên":"Phóng viên"}
     </div>
 </div>
 </body>

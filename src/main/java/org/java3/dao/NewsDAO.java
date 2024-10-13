@@ -76,12 +76,12 @@ public class NewsDAO extends AbstractDAO<News, Object> {
     }
 
     public List<News> selectNewsByAuthor(String author) {
-        String sql = "SELECT N.* FROM NEWS N, USERS U WHERE AUTHOR = FULLNAME AND U.ID = ?";
+        String sql = "SELECT N.* FROM NEWS N, USERS U WHERE AUTHOR = FULLNAME AND U.ID = ? ORDER BY HOME DESC, ID DESC";
         return selectBySql(sql, author);
     }
 
     public List<News> selectNewsByCategory(String categoryId) {
-        String sql = "SELECT N.* FROM NEWS N, CATEGORIES C WHERE C.ID = CATEGORIES_ID AND C.ID =?";
+        String sql = "SELECT N.* FROM NEWS N, CATEGORIES C WHERE C.ID = CATEGORIES_ID AND C.ID =? ORDER BY HOME DESC, ID DESC";
         return selectBySql(sql, categoryId);
     }
 

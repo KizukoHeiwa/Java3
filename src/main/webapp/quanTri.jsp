@@ -41,33 +41,35 @@
     </div>
 
     <div class="article container mt-5 w-75">
-        <table>
-            <thead>
-            <tr>
-                <td>Username</td>
-                <td>Họ và tên</td>
-                <td>Ngày sinh</td>
-                <td>Giới tính</td>
-                <td>Số điện thoại</td>
-                <td>Email</td>
-                <td>Thao tác</td>
-            </tr>
-            </thead>
-
-            <tbody>
-            <c:forEach items="${listUsers}" var="user">
+        <form method="post">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${user.id}</td>
-                    <td>${user.fullname}</td>
-                    <td>${user.birthday}</td>
-                    <td>${user.gender?"Nam":"Nữ"}</td>
-                    <td>${user.mobile}</td>
-                    <td>${user.email}</td>
-                    <td><a href="quanTri?delete=${user.id}">Xóa</a></td>
+                    <td>Username</td>
+                    <td>Họ và tên</td>
+                    <td>Ngày sinh</td>
+                    <td>Giới tính</td>
+                    <td>Số điện thoại</td>
+                    <td>Email</td>
+                    <td>Thao tác</td>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${listUsers}" var="user">
+                    <tr>
+                        <td>${user.id}</td>
+                        <td>${user.fullname}</td>
+                        <td>${user.birthday}</td>
+                        <td>${user.gender?"Nam":"Nữ"}</td>
+                        <td>${user.mobile}</td>
+                        <td>${user.email}</td>
+                        <td><button value="quanTri?delete=${user.id}" formaction="quanTri?delete=${user.id}">Xóa</button></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </form>
     </div>
 
     <div class="footer container text-bg-primary text-center">
