@@ -9,7 +9,7 @@ import org.java3.dao.NewsDAO;
 
 import java.io.IOException;
 
-@WebServlet("")
+@WebServlet({""})
 public class index extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
