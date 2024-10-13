@@ -3,12 +3,11 @@ package org.java3;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.Part;
+import jakarta.servlet.http.*;
+import org.apache.commons.codec.binary.Base64;
 import org.java3.dao.CategoriesDAO;
 import org.java3.dao.NewsDAO;
+import org.java3.dao.UsersDAO;
 import org.java3.entity.News;
 import org.java3.utils.XDate;
 
@@ -24,9 +23,23 @@ import java.util.Date;
         "/phongVien/delete"
 })
 public class phongVien extends HttpServlet {
-    String id = "";
+    String username = "";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Cookie[] cookies = req.getCookies();
+        if(cookies != null) {
+            for(Cookie cookie: cookies) {
+                if(cookie.getName().equals("user")) {
+                    String encoded = cookie.getValue();
+                    byte[] bytes = Base64.decodeBase64(encoded);
+                    String[] userInfo = new String(bytes).split(",");
+                    username = userInfo[0];
+                }
+            }
+        }
+
+        req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
+        req.setAttribute("author", new UsersDAO().selectById(username));
         req.setAttribute("isEdit", false);
         req.setAttribute("listCategories", new CategoriesDAO().selectAll());
 

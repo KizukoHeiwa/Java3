@@ -17,7 +17,9 @@ public class index extends HttpServlet {
         req.setAttribute("listTopViewNews", new NewsDAO().selectTopViewNews());
         req.setAttribute("listLatestNews", new NewsDAO().selectLatestNews());
 
-        if (req.getQueryString() != null) {
+        String query = (req.getQueryString() != null ? req.getQueryString() : "");
+
+        if (query.contains("category")) {
             req.setAttribute("listNews", new NewsDAO().selectNewsByCategory(req.getParameter("category")));
         }
         req.getRequestDispatcher("/index.jsp").forward(req, resp);
