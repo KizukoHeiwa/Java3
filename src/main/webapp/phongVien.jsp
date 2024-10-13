@@ -23,7 +23,11 @@
         <a href="/" class="logo"><img src="img/logo.png" alt="" width="100px" class="left m-2"></a>
         <div class="center d-flex justify-content-around">
             <!-- <input type="text" name="search" placeholder="Nhập vào bản tin cần tìm kiếm & chỉnh sửa"> -->
-            <a href="/phongVien" class="utils">Đăng bài viết</a>
+<%--            <a href="/phongVien" class="utils">Đăng bài viết</a>--%>
+        </div>
+        <div class="right d-flex justify-content-around">
+            <a href="?lang=vi_VN"><fmt:message key="menu.vietnamese"/></a><span>|</span>
+            <a href="?lang=en_US"><fmt:message key="menu.english"/></a>
         </div>
         <div class="right d-flex justify-content-around">
             <a href="/" class="signin"><fmt:message key="menu.signOut"/></a>
@@ -33,7 +37,12 @@
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
             <a href="/"><fmt:message key="menu.home"/></a>
-            <a href="quanTri">Tin tức</a>
+            <a href="phongVien">Tin tức</a>
+            <c:if test="${user.role}">
+                <a href="#">Loại tin</a>
+                <a href="quanTri">Người dùng</a>
+                <a href="#">Newsletter</a>
+            </c:if>
         </div>
     </div>
 
@@ -46,7 +55,7 @@
                 <form action="phongVien?${!isEdit?"upload":"edit="}${news.id}" method="post" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="author">Người đăng</label>
-                        <input name="author" type="text" class="form-control" id="author" value="${user.fullname}" readonly>
+                        <input name="author" type="text" class="form-control" id="author" value="${isEdit?news.author:user.fullname}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="title">Tiêu đề</label>
@@ -76,6 +85,7 @@
                     <c:if test="${isEdit}">
                         <button formaction="phongVien?delete=${news.id}" class="m-2">Xóa bài</button>
                     </c:if>
+                    <button type="reset" class="m-2">Reset</button>
                 </form>
             </div>
             <div class="col-3 main">

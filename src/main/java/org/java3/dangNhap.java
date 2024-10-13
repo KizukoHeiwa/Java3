@@ -60,14 +60,15 @@ public class dangNhap extends HttpServlet {
 
             req.setAttribute("user", new UsersDAO().selectById(username));
             req.setAttribute("listCategories", new CategoriesDAO().selectAll());
-            if (user.isRole()) {
-                req.setAttribute("listUsers", usersDAO.selectAllNotRole());
-                req.getRequestDispatcher("/quanTri.jsp").forward(req, resp);
-            }
-            else {
-                req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
-                req.getRequestDispatcher("/phongVien.jsp").forward(req, resp);
-            }
+//            if (user.isRole()) {
+//                req.setAttribute("listUsers", usersDAO.selectAllNotRole());
+//                req.getRequestDispatcher("/quanTri.jsp").forward(req, resp);
+//            }
+//            else {
+//                req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
+//                req.getRequestDispatcher("/phongVien.jsp").forward(req, resp);
+//            }
+            req.getRequestDispatcher("/quanLyTaiKhoan.jsp").forward(req, resp);
         }
         else {
             req.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng");

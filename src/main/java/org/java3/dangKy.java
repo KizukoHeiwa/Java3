@@ -23,12 +23,12 @@ public class dangKy extends HttpServlet {
         Users user = new Users();
         user.setId(req.getParameter("username"));
         user.setPassword(req.getParameter("password"));
-        user.setFullname(req.getParameter("hoTen"));
         user.setFullname(req.getParameter("fullname"));
         user.setBirthday(XDate.toDate(req.getParameter("birthday"), "yyyy-MM-dd"));
         user.setGender(req.getParameter("gender").equals("Nam"));
         user.setMobile(req.getParameter("mobile"));
         user.setEmail(req.getParameter("email"));
+        user.setRole(false);
 
         new UsersDAO().insert(user);
         resp.sendRedirect(req.getContextPath() + "/dangNhap");

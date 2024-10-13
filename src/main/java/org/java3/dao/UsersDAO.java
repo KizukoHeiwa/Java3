@@ -26,7 +26,7 @@ public class UsersDAO extends AbstractDAO<Users, Object>{
 
     @Override
     public void update(Users entity) {
-        String sql = "{CALL spUsersUpdate(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+        String sql = "{CALL spUsersUpdate(?, ?, ?, ?, ?, ?, ?, ?)}";
         XJdbc.executeUpdate(sql,
                 entity.getId(),
                 entity.getPassword(),

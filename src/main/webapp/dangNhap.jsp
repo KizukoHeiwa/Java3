@@ -20,12 +20,16 @@
 <div class="container">
     <div class="header d-flex justify-content-between align-items-center bg-primary px-3">
         <a href="/" class="logo"><img src="img/logo.png" alt="" width="100px" class="left m-2"></a>
-        <div class="center d-flex justify-content-around">
-            <input type="text" name="search">
-            <a href="#" class="utils">Utilities</a>
+<%--        <div class="center d-flex justify-content-around">--%>
+<%--            <input type="text" name="search">--%>
+<%--            <a href="#" class="utils">Utilities</a>--%>
+<%--        </div>--%>
+        <div class="right d-flex justify-content-around">
+            <a href="?lang=vi_VN"><fmt:message key="menu.vietnamese"/></a><span>|</span>
+            <a href="?lang=en_US"><fmt:message key="menu.english"/></a>
         </div>
         <div class="right d-flex justify-content-around">
-            <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a>
+            <a href="dangNhap" class="signin"><fmt:message key="menu.signIn"/></a><span>|</span>
             <a href="dangKy" class="signup"><fmt:message key="menu.signUp"/></a>
         </div>
     </div>
@@ -45,7 +49,7 @@
     <div class="article container mt-5 w-25">
         <form action="dangNhap" method="post">
             <fieldset class="p-3">
-                <legend><fmt:message key="menu.signUp"/></legend>
+                <legend><fmt:message key="menu.signIn"/></legend>
                 <div class="form-group">
                     <label for="username">Tên đăng nhập</label>
                     <input name="username" type="text" class="form-control" id="username" value="${username}">

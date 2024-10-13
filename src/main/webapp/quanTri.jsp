@@ -21,9 +21,13 @@
 <div class="container">
     <div class="header d-flex justify-content-between align-items-center bg-primary px-3">
         <a href="/" class="logo"><img src="img/logo.png" alt="" width="100px" class="left m-2"></a>
-        <div class="center d-flex justify-content-around">
-            <!-- <input type="text" name="search" placeholder="Nhập vào bản tin cần tìm kiếm & chỉnh sửa"> -->
-            <a href="/quanTri" class="utils">Đăng bài viết</a>
+<%--        <div class="center d-flex justify-content-around">--%>
+<%--            <!-- <input type="text" name="search" placeholder="Nhập vào bản tin cần tìm kiếm & chỉnh sửa"> -->--%>
+<%--            <a href="/phongVien" class="utils">Đăng bài viết</a>--%>
+<%--        </div>--%>
+        <div class="right d-flex justify-content-around">
+            <a href="?lang=vi_VN"><fmt:message key="menu.vietnamese"/></a><span>|</span>
+            <a href="?lang=en_US"><fmt:message key="menu.english"/></a>
         </div>
         <div class="right d-flex justify-content-around">
             <a href="/" class="signin"><fmt:message key="menu.signOut"/></a>
@@ -33,10 +37,12 @@
     <div class="menu container">
         <div class="d-flex menu-items justify-content-between">
             <a href="/"><fmt:message key="menu.home"/></a>
-            <a href="#">Tin tức</a>
-            <a href="#">Loại tin</a>
-            <a href="#">Người dùng</a>
-            <a href="#">Newsletter</a>
+            <c:if test="${user.role}">
+                <a href="phongVien">Tin tức</a>
+                <a href="#">Loại tin</a>
+                <a href="#">Người dùng</a>
+                <a href="#">Newsletter</a>
+            </c:if>
         </div>
     </div>
 

@@ -43,13 +43,12 @@ public class phongVien extends HttpServlet {
         user = new UsersDAO().selectById(username);
 
         if (user.isRole()) {
-            req.setAttribute("user", new UsersDAO().selectAll());
+            req.setAttribute("listNews", new NewsDAO().selectAllDesc());
         }
         else {
-            req.setAttribute("user", user);
+            req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
         }
 
-        req.setAttribute("listNews", new NewsDAO().selectNewsByAuthor(username));
         req.setAttribute("isEdit", false);
         req.setAttribute("listCategories", new CategoriesDAO().selectAll());
 
