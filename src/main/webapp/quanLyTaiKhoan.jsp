@@ -52,7 +52,7 @@
     <div class="article container mt-5 w-25">
         <form action="qltk" method="post">
             <fieldset class="p-3">
-                <legend><fmt:message key="menu.signUp"/></legend>
+                <legend>Quản lý tài khoản</legend>
                 <div class="form-group">
                     <label for="username">Tên đăng nhập</label>
                     <input name="username" type="text" class="form-control" id="username" value="${user.id.trim()}">
