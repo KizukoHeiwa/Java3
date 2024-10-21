@@ -12,7 +12,7 @@ public class SanPhamDAO extends AbstractDAO<SanPham, Object> {
 
     @Override
     public void insert(SanPham entity) {
-        String sql = "INSERT INTO SANPHAM VALUE (?, ?, ?, ?)";
+        String sql = "INSERT INTO SANPHAM VALUES (?, ?, ?, ?)";
         XJdbc.executeUpdate(sql,
                 entity.getMaSP(),
                 entity.getTenSP(),
@@ -48,6 +48,25 @@ public class SanPhamDAO extends AbstractDAO<SanPham, Object> {
     public List<SanPham> selectAll() {
         String sql = "SELECT * FROM SANPHAM";
         return selectBySql(sql);
+    }
+
+    public List<String> selectAllCategories() {
+        String sql = "SELECT LOAISP FROM SANPHAM GROUP BY LOAISP";
+        List<String> list = new ArrayList<>();
+        try {
+            ResultSet rs = null;
+            try {
+                rs = XJdbc.executeQuery(sql);
+                while (rs.next()) {
+                    list.add(rs.getString("LOAISP"));
+                }
+            } finally {
+                rs.getStatement().getConnection().close();
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return list;
     }
 
     public List<SanPham> selectByCategory(Object category) {

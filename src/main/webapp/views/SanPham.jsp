@@ -18,25 +18,26 @@
 </style>
 <body>
     <form method="post">
-        <input type="text" name="maSP"><br>
-        <input type="text" name="tenSP"><br>
-        <input type="number" name="giaSP"><br>
-        <input type="text" name="loaiSP"><br>
+        <input type="text" name="maSP" value="${sanPham.maSP}" ${sanPham.maSP!=null?'readonly':''}><br>
+        <input type="text" name="tenSP" value="${sanPham.tenSP}"><br>
+        <input type="number" name="gia" value="${sanPham.gia}"><br>
+        <input type="text" name="loaiSP" value="${sanPham.loaiSP}"><br>
         <br>
-        <input type="submit" value="Thêm mới" formaction="/SanPham/them">
-        <input type="submit" value="Cập nhật" formaction="/SanPham?capNhat=${sanPham.maSP}">
-        <input type="submit" value="Xóa" formaction="/SanPham?xoa=${sanPham.maSP}">
+        <input type="submit" value="Thêm mới" formaction="/SanPham/them" ${sanPham.maSP!=null?'disabled':''}>
+        <input type="submit" value="Cập nhật" formaction="/SanPham?capNhat=${sanPham.maSP}" ${sanPham.maSP==null?'disabled':''}>
+        <input type="submit" value="Xóa" formaction="/SanPham?xoa=${sanPham.maSP}" ${sanPham.maSP==null?'disabled':''}>
         <input type="reset" value="Reset">
     </form>
     <form method="get">
         <label for="loaiSP">Lọc theo loại: </label>
         <select name="loaiSP" id="loaiSP">
             <option value="">Tất cả</option>
-            <option value="Bánh kẹo">Bánh kẹo</option>
-            <option value="Rượu bia">Rượu bia</option>
-            <option value="Hải sản">Hải sản</option>
+            <c:forEach items="${listLoai}" var="loai">
+                <option value="${loai}" ${param.loaiSP == loai?'selected':''}>${loai}</option>
+            </c:forEach>
         </select>
         <input type="submit" value="Lọc">
+        <input type="submit" value="Return" formaction="/SanPham">
     </form>
 
     <table>
@@ -61,5 +62,6 @@
             </c:forEach>
         </tbody>
     </table>
+    ${message}
 </body>
 </html>
