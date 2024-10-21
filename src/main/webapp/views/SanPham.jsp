@@ -50,7 +50,7 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="listSanPham" var="sanPham">
+            <c:forEach items="${listSanPham}" var="sanPham">
                 <tr>
                     <td>${sanPham.maSP}</td>
                     <td>${sanPham.tenSP}</td>

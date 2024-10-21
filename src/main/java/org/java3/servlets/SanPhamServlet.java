@@ -16,6 +16,10 @@ public class SanPhamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("listSanPham", sanPhamDAO.selectAll());
+//        if (req.getQueryString() != null) {
+//            req.setAttribute("sanPham", sanPhamDAO.selectById())
+//        }
+        System.out.println(req.getQueryString());
         req.getRequestDispatcher("/views/SanPham.jsp").forward(req, resp);
     }
 }
