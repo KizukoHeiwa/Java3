@@ -16,10 +16,14 @@ public class SanPhamServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("listSanPham", sanPhamDAO.selectAll());
-//        if (req.getQueryString() != null) {
-//            req.setAttribute("sanPham", sanPhamDAO.selectById())
-//        }
-        System.out.println(req.getQueryString());
+        if (req.getQueryString() != null) {
+            if (req.getQueryString().contains("suaDoi")) {
+                req.setAttribute("sanPham", sanPhamDAO.selectById(req.getParameter("suaDoi")));
+            }
+            if (req.getQueryString().contains("loaiSP")) {
+                req.setAttribute("listSanPham", sanPhamDAO.selectByCategory(req.getParameter("loaiSP")));
+            }
+        }
         req.getRequestDispatcher("/views/SanPham.jsp").forward(req, resp);
     }
 }
