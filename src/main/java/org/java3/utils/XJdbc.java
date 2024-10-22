@@ -4,7 +4,7 @@ import java.sql.*;
 
 public class XJdbc {
     private static final String driver="com.microsoft.sqlserver.jdbc.SQLServerDriver";
-    private static final String dburl="jdbc:sqlserver://localhost;database=QuanLySanPham;encrypt=false";
+    private static final String dburl="jdbc:sqlserver://localhost;database=QuanLyUsers;encrypt=false";
     private static final String username="sa";
     private static final String password="123";
 
